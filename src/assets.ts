@@ -1,7 +1,8 @@
 /**
  * SVG 资产路径索引
- * 所有 assetKey 与 docs/ASSET_LIST.md 中的 assetId 一一对应。
- * 替换美术资源时只修改此处路径，不改动 sceneObjects.json 中的 assetKey 与对象 id。
+ * 本文件的 key 即 assetId（扁平命名），与 docs/ASSET_LIST.md 的 assetId 一一对应。
+ * 对象+状态到 assetId 的映射在 src/data/visuals.json，不在本文件，也不在 sceneObjects.json。
+ * 替换美术资源时只修改此处路径，不改动对象 id。
  * 见 docs/TECH_DECISION.md "素材替换约束"。
  */
 

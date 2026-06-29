@@ -1,0 +1,52 @@
+{
+  "_comment": "对象+状态 → src/assets.ts 中 AssetPaths 的扁平 assetId 映射。sceneObjects.json 只管 id/坐标/hitbox/交互；src/assets.ts 只管 assetId→文件路径；本文件负责 objectId+state→assetId。渲染层只读本文件，不再从 sceneObjects 读素材键。dangerOverlays 规则：screen_fishing_glow（computer 无专属危险精灵图）与 desk_clutter_warning_icon（files 无专属危险精灵图）靠叠加 danger_marker 表现；phone_screen_lit、takeout_box_open_icon、posture_slack_overlay 已在 objectVisuals 以整图替换表现，dangerOverlays 中记录其对应精灵图供渲染层索引，不额外叠加图层。",
+  "objectVisuals": {
+    "computer": {
+      "idle_safe_work": "computer",
+      "idle_fishing": "computer",
+      "unsafe_screen": "computer"
+    },
+    "keyboard": {
+      "idle": "keyboard"
+    },
+    "phone": {
+      "idle_off": "phone_idle",
+      "phone_lit": "phone_lit"
+    },
+    "takeout_box": {
+      "idle_closed": "takeout_closed",
+      "takeout_open": "takeout_open"
+    },
+    "coffee": {
+      "idle_full": "coffee"
+    },
+    "files": {
+      "idle_tidy": "files_normal",
+      "desk_empty": "files_normal",
+      "organized": "files_organized"
+    },
+    "coworker": {
+      "idle": "coworker_idle",
+      "watch": "coworker_watch",
+      "unstable": "coworker_unstable"
+    },
+    "protagonist": {
+      "idle_seated": "protagonist_idle",
+      "body_slack": "protagonist_slack",
+      "sit_up": "protagonist_sit_up"
+    },
+    "leader": {
+      "patrol_far": "leader_silhouette",
+      "approaching": "leader_silhouette",
+      "checking": "leader_silhouette",
+      "leaving": "leader_silhouette"
+    }
+  },
+  "dangerOverlays": {
+    "screen_fishing_glow": "danger_marker",
+    "phone_screen_lit": "phone_lit",
+    "takeout_box_open_icon": "takeout_open",
+    "desk_clutter_warning_icon": "danger_marker",
+    "posture_slack_overlay": "protagonist_slack"
+  }
+}

@@ -49,7 +49,7 @@
       "qteStepId": ["sit_up", "type_keyboard"],
       "priority": 5,
       "visualState": "posture_slack_overlay",
-      "description": "主要作为 QTE 补充项使用，不由单一平时动作触发。生成条件（制作方案 12.3）：当前真实危险状态数量低于本波次 QTE 步数需求、玩家近期连续执行摸鱼类动作、或波次较高需要补齐“人像在工作”层级。由 QTE 生成系统在判定时动态产生，本文件不写入具体判定逻辑。"
+      "description": "主要作为 QTE 补充项使用，不由单一平时动作触发。生成条件（制作方案 12.3）：当前真实危险状态数量低于本波次 QTE 步数需求、玩家近期连续执行摸鱼类动作、或波次较高需要补齐“人像在工作”层级。由 QTE 生成系统在判定时动态产生，本文件不写入具体判定逻辑。sit_up 与 type_keyboard 作为表演型 filler 步骤，其 clearsDanger 可幂等执行：第一步已清除 body_slack 后，第二步仍可作为表演补步正常完成。"
     }
   }
 }

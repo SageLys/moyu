@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate": "node tools/validate-config.mjs",
+    "test": "npm run validate"
   },
   "dependencies": {
     "phaser": "^3.90.0"

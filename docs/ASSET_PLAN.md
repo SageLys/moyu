@@ -7,7 +7,8 @@
 - docs/STYLE_GUIDE.md（视觉风格规范，所有资产都必须遵守）
 - docs/SCENE_LAYOUT.md（画面层级、对象布局、UI 区域坐标）
 - docs/INTERACTION_FLOW.md（资产对应的交互触发时机）
-- src/data/sceneObjects.json（已固化的对象 id、`assetKey`、`placeholderAsset` 路径约定）
+- src/data/sceneObjects.json（已固化的对象 id、坐标与交互属性）
+- src/data/visuals.json（objectId + state → assetId 映射，渲染层素材索引）
 - docs/TECH_DECISION.md（"第一版为什么允许 SVG 和 AI 生成图并存"、素材替换约束）
 
 本文档只确定资产策略与入库规则，不写正式玩法逻辑、不实际调用生图工具、不生成复杂成品插画。
@@ -94,7 +95,15 @@
 
 ### 4.3 代码登记规则
 
-任何正式接入代码的图片（无论来自 SVG 还是 AI 生图流程）**必须**在 `src/assets.ts` 中登记。`src/assets.ts` 当前尚未创建，将在美术资源正式接入开发阶段创建并维护；登记时只更新资源的文件路径引用，不改变 `src/data/sceneObjects.json` 中已固化的 `assetKey`（对象逻辑键）与对象 `id`，遵循 `docs/TECH_DECISION.md` 的"素材替换约束"。
+任何正式接入代码的图片（无论来自 SVG 还是 AI 生图流程）**必须**在 `src/assets.ts` 中登记。`src/assets.ts` 已存在并维护，登记时只更新资源的文件路径引用，遵循 `docs/TECH_DECISION.md` 的"素材替换约束"。
+
+三层素材职责分工：
+
+- `src/data/sceneObjects.json`：只管对象 id / 坐标 / hitbox / 交互属性 / 视觉状态枚举；
+- `src/assets.ts`：只管 assetId → 文件路径；
+- `src/data/visuals.json`：负责 objectId + state → assetId 映射，渲染层只读它。
+
+`placeholderAsset` 字段已从 `sceneObjects.json` 移除（原字段随素材路径机制迁移至 `visuals.json`）。
 
 ### 4.4 关于"可选气氛资产"的制作方式说明
 

@@ -1,6 +1,6 @@
 # 数据配置说明（DATA_SCHEMA）
 
-本文档解释 `src/data/*.json` 七个配置文件的字段含义、可调范围和引用方式。
+本文档解释 `src/data/*.json` 九个配置文件的字段含义、可调范围和引用方式。
 
 来源文档：
 
@@ -108,7 +108,7 @@
 | `progressionRules` | object | 策划可调（标志位）+ 说明 | `increaseWaveOnSuccess`、`increaseWaveOnFail` 控制波次推进时机；`description` 字段补充文字说明，不参与计算 |
 | `coworkerWatchEffect` | object | 策划可调 | 「请同事望风」动作对下一次预警时间的加成：`consumesBuff` 指明消耗的 buff id（`coworkerWatch`），`warningTimeBonusMin/Max` 是加成秒数区间，`appliesToNextWarningOnly` 标记只生效一次 |
 
-QTE 成功 / 失败的资源结算数值（精神值 -4、信任值 +6、安全窗口 4 秒 / 精神值 -8、信任值 -15，制作方案 14.9、14.10）**尚未写入任何配置文件**，留给后续步骤决定归属（更适合放在 `qte.json` 的规则块或新增的结算配置里），本次不新增字段以免超出当前任务范围。
+QTE 成功 / 失败的资源结算数值已写入 `qte.json` 的 `qteOutcome`（见第 5 节）。
 
 ---
 
@@ -142,6 +142,23 @@ QTE 成功 / 失败的资源结算数值（精神值 -4、信任值 +6、安全�
 | `fillerSteps` | string[] | 策划可调 | 当真实危险状态数量不足时用于补齐步数的步骤 id（`sit_up`、`type_keyboard`） |
 | `priorityBasedOnDangers` | boolean | 策划可调 | 是否按 `dangers.json` 里的 `priority` 排序生成 QTE 步骤顺序 |
 
+`qteOutcome` 字段（顶层，与 `qteSteps`/`qteRules` 并列）：
+
+| 字段 | 类型 | 策划可调 / 程序内部 | 说明 |
+|---|---|---|---|
+| `success.delta` | object | 策划可调 | QTE 全程通过后的资源增减（当前：`spirit: -4, trust: +6`） |
+| `success.safeWindowSeconds` | number | 策划可调 | QTE 通过后的安全窗口时长（秒，领导不触发新预警） |
+| `fail.delta` | object | 策划可调 | QTE 失败（倒计时归零）后的资源增减（当前：`spirit: -8, trust: -15`） |
+| `fail.keepUnfinishedDangers` | boolean | 策划可调 | QTE 失败后未清除的危险状态是否保留 |
+
+`coworkerRescueEffect` 字段（顶层）：
+
+| 字段 | 类型 | 策划可调 / 程序内部 | 说明 |
+|---|---|---|---|
+| `consumesBuff` | string | 程序内部 | 触发救援效果需要消耗的 buff id（`coworkerRescue`） |
+| `appliesToNextQteFailOnly` | boolean | 策划可调 | 只对紧接的下一次 QTE 失败生效，结算后立即清除 buff |
+| `overrideFailDelta` | object | 策划可调 | 持有 buff 时 QTE 失败的替换结算（当前只覆盖 `trust: -5`，其余字段不变） |
+
 ---
 
 ## 6. copyText.json
@@ -160,7 +177,7 @@ QTE 成功 / 失败的资源结算数值（精神值 -4、信任值 +6、安全�
 | `endTexts` | 四种归零结束陈述：`spirit_zero`（可出现外星人）、`satiety_zero`（不出现外星人）、`trust_zero`（职场委婉表达）、`coworker_spirit_zero`（同事异常事件） | 结束系统按 `endReason` 读取 |
 | `systemMessages` | 状态机层面的通用提示（领导出现、预警开始、QTE 整体成功/失败、安全窗口开始、波次提高、单局开始/可重开），本版为首批原创短句，后续可扩充变体 | 领导波次系统、状态机 |
 
-所有分类下的值统一为字符串数组（即使当前只有 1 条），保持引用方式一致，方便后续扩充更多变体而不改变引用结构。
+copyText 末端类型为 `CopyLeaf = string | string[]`。`hoverTexts.objects` / `hoverTexts.actions` 为 `string`（hover 返回单条）；`actionFeedbacks` / `qtePrompts` / `qteSuccess` / `qteWrong` / `resourceWarnings` / `coworkerHints` / `endTexts` / `systemMessages` 为 `string[]`（运行时随机或取第一条）。`resolveCopyText` 需同时接受两种末端。
 
 文案风格强制规则（违反即视为不合规）：
 
@@ -185,9 +202,9 @@ QTE 成功 / 失败的资源结算数值（精神值 -4、信任值 +6、安全�
 | `role` | string（枚举） | 程序内部 | 对象在系统里的功能分类：`screen_disguise`（电脑，屏幕伪装层）、`qte_body_prop`（键盘、主角本体，仅 QTE 人像层使用）、`desk_item`（手机、外卖盒、咖啡杯、文件堆，桌面物件）、`coworker_menu_trigger`（同事，打开气泡菜单）、`visual_pressure_source`（领导，视觉压力源，不可点击） |
 | `clickableInNormal` | boolean | 策划可调 | 是否在 `NORMAL_PLAY` 下可直接点击 |
 | `clickableInQte` | boolean | 策划可调 | 是否可作为 QTE 目标。只有 `computer`/`phone`/`takeout_box`/`files`/`protagonist`/`keyboard` 为 `true`，`coffee`/`coworker`/`leader` 为 `false` |
-| `assetKey` | string | 程序内部 | 程序引用的稳定逻辑键，命名为 `interactables.<id>` 或 `characters.<id>`。美术资源迭代时这个键保持不变（参见 docs/TECH_DECISION.md 素材替换约束） |
-| `placeholderAsset` | string | 程序内部（当前阶段占位） | 当前指向 `assets/placeholders/<id>.svg` 的占位文件路径，正式美术资源接入后更新指向，不改变 `assetKey` |
 | `hoverTextKey` | string | 程序内部（指向 copyText） | 指向 `hoverTexts.objects.<id>` 的通用悬停说明。当某个对象同时绑定多个动作（如 `computer` 绑定两个电脑动作，`coworker` 绑定四个同事动作）时，具体动作的悬停文案以 `actions.json.hoverTextKey` 为准，本字段作为兜底通用说明 |
+
+`assetKey` 与 `placeholderAsset` 字段已从 `sceneObjects.json` 移除。对象+状态到 assetId 的映射现由 `src/data/visuals.json` 承载（见第 8 节）。
 
 约束（来自任务要求，验收时需要核对）：
 
@@ -198,12 +215,42 @@ QTE 成功 / 失败的资源结算数值（精神值 -4、信任值 +6、安全�
 
 ---
 
-## 8. 文件间引用关系一览
+## 8. visuals.json
+
+对应「三层素材分工」中的渲染层索引。顶层结构：`{ objectVisuals: {...}, dangerOverlays: {...} }`
+
+`objectVisuals` 字段：`{ <objectId>: { <stateName>: assetId } }` —— 每个对象下列出所有视觉状态，值为 `src/assets.ts` 中 `AssetPaths` 的扁平 key（即 assetId）。渲染层根据当前 objectId + state 查此表取 assetId，再通过 `src/assets.ts` 解析文件路径，不从 `sceneObjects.json` 读素材信息。
+
+`dangerOverlays` 字段：`{ <dangerVisualStateKey>: assetId }` —— 危险状态叠加精灵图索引，key 对应 `dangers.json` 中各条目的 `visualState`。
+
+---
+
+## 9. gameRules.json
+
+集中存放程序级阈值与生成规则，避免将数值写死在系统类里。顶层结构：`{ workTrace: {...}, bodySlack: {...} }`
+
+| 字段 | 类型 | 策划可调 / 程序内部 | 说明 |
+|---|---|---|---|
+| `workTrace.baseThresholdSeconds` | number | 策划可调 | 工位太空计时器基础触发阈值（秒） |
+| `workTrace.minThresholdSeconds` | number | 策划可调 | 阈值随波次缩减的下限（秒） |
+| `workTrace.reducePerWaveAfter` | number | 策划可调 | 从第几波开始每波缩减阈值 |
+| `workTrace.reduceSecondsPerWave` | number | 策划可调 | 每波缩减的秒数 |
+| `bodySlack.enableAsQteFiller` | boolean | 策划可调 | 是否允许 body_slack 类步骤作为 QTE filler |
+| `bodySlack.minWave` | number | 策划可调 | 最低在第几波才启用 filler 生成 |
+| `bodySlack.preferAlternatingSteps` | boolean | 策划可调 | filler 步骤是否交替选取（sit_up / type_keyboard） |
+
+---
+
+## 10. 文件间引用关系一览
 
 ```text
-sceneObjects.json (对象)
+sceneObjects.json (对象 id / 坐标 / hitbox / 交互属性)
   ← targetObjectId ← actions.json (平时动作)
   ← targetObjectId ← qte.json.qteSteps (QTE 步骤)
+
+visuals.json (objectId + state → assetId)
+  → assetId → src/assets.ts (assetId → 文件路径)
+  → dangerOverlays.visualState ← dangers.json.visualState
 
 actions.json
   → setDanger / clearDanger → dangers.json
@@ -218,20 +265,32 @@ qte.json.qteSteps
   → clearsDanger → dangers.json
   → promptTextKey / successTextKey / wrongTextKeys → copyText.json
 
+qte.json.qteOutcome
+  独立结算块，程序按 success/fail 读取 delta 与 safeWindowSeconds
+
+qte.json.coworkerRescueEffect
+  → consumesBuff（coworkerRescue）← actions.json 中同事救援动作设置的 buff
+
 waves.json
   → coworkerWatchEffect.consumesBuff → actions.json 中 coworker_watch 设置的 buff
 
 resources.json
   独立资源定义，被资源系统、动作系统、结束系统共同读取
+
+gameRules.json
+  独立规则阈值，被工位太空计时器系统与 QTE filler 生成系统读取
 ```
 
-## 9. 验收对照
+## 11. 验收对照
 
 | 验收项 | 对应做法 |
 |---|---|
-| JSON 合法 | 七个文件均已用 `python3 -m json.load` 校验通过 |
+| JSON 合法 | 九个文件均已用 `npm run validate` 校验通过 |
 | 不新增方案外资源 | 仅 `spirit`/`satiety`/`trust`/`coworkerSpirit` 四项 |
 | 不新增方案外动作 | 仅制作方案 10.1 节列出的 10 个动作（A1/A2/B1-B4/C1-C4） |
 | 不新增方案外 QTE | 仅制作方案 14.2 节列出的 6 个 QTE 步骤（Q1-Q6） |
-| 不写正式玩法逻辑 | 七个文件均为纯数据，不含可执行逻辑；判定类内容只写在 `description` 里作为说明 |
-| 本文档可读性 | 第 1-7 节逐字段说明，第 8 节给出引用关系图，第 9 节给出验收对照 |
+| QTE 结算写入配置 | `qte.json.qteOutcome` 含 success/fail delta 与 safeWindowSeconds；`coworkerRescueEffect` 含救援抵消规则 |
+| 三层素材分工 | sceneObjects 只管交互属性；visuals.json 管 objectId+state→assetId；assets.ts 管 assetId→路径 |
+| 不写正式玩法逻辑 | 九个文件均为纯数据，不含可执行逻辑；判定类内容只写在 `description` 里作为说明 |
+| npm run validate 通过 | 配置引用校验脚本无报错 |
+| 本文档可读性 | 第 1-9 节逐字段说明，第 10 节给出引用关系图，第 11 节给出验收对照 |

@@ -120,7 +120,7 @@
     "qte_wave_fail": ["领导在你的工位前停留了比平时更久的时间。"],
     "safe_window_start": ["短暂的安全时间开始了。"],
     "wave_increase": ["巡查的频率提高了一些。"],
-    "run_start": ["新的一天开始了，工位的计时器重新归零。"],
-    "run_restart_available": ["可以重新开始这一天。"]
+    "run_start": ["本次记录开始，工位计时器归零。"],
+    "run_restart_available": ["可以重新开始本次记录。"]
   }
 }

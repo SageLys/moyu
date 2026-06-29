@@ -1,0 +1,5 @@
+{
+  "_comment": "工位太空计时器与人体不像工作 filler 的规则。程序侧读取本文件，不再把阈值写死在系统类里。",
+  "workTrace": { "baseThresholdSeconds": 20, "minThresholdSeconds": 14, "reducePerWaveAfter": 3, "reduceSecondsPerWave": 1 },
+  "bodySlack": { "enableAsQteFiller": true, "minWave": 1, "preferAlternatingSteps": true }
+}

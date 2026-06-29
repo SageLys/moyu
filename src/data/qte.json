@@ -68,6 +68,17 @@
     "wrongClickImmediateFail": false,
     "generateFromRealDangersFirst": true,
     "fillerSteps": ["sit_up", "type_keyboard"],
-    "priorityBasedOnDangers": true
+    "priorityBasedOnDangers": true,
+    "fillerClearIsCosmetic": true
+  },
+  "qteOutcome": {
+    "success": { "delta": { "spirit": -4, "trust": 6 }, "safeWindowSeconds": 4 },
+    "fail": { "delta": { "spirit": -8, "trust": -15 }, "keepUnfinishedDangers": true }
+  },
+  "coworkerRescueEffect": {
+    "consumesBuff": "coworkerRescue",
+    "appliesToNextQteFailOnly": true,
+    "overrideFailDelta": { "trust": -5 },
+    "description": "持有 coworkerRescue 时，下一次 QTE 失败的信任值结算从 -15 抵消为 -5（其余结算不变），结算后立即清除该 buff。只抵消一次 QTE 失败，不抵消单次点错。"
   }
 }
