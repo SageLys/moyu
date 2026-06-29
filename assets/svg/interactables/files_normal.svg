@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" width="140" height="160">
+  <!-- Bottom paper (tilted right) -->
+  <rect x="14" y="22" width="108" height="130" rx="3" fill="#D4D0C4" stroke="#2C3E50" stroke-width="2" transform="rotate(7 70 87)"/>
+  <!-- Middle paper (tilted left) -->
+  <rect x="10" y="20" width="108" height="132" rx="3" fill="#DEDAD0" stroke="#2C3E50" stroke-width="2" transform="rotate(-4 64 86)"/>
+  <!-- Top paper (straight) -->
+  <rect x="8" y="18" width="112" height="134" rx="3" fill="#E8E4D8" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Content lines on top paper -->
+  <rect x="18" y="32" width="82" height="7" rx="2" fill="#C4C0B4"/>
+  <rect x="18" y="48" width="92" height="5" rx="2" fill="#CECAC0" opacity="0.8"/>
+  <rect x="18" y="60" width="74" height="5" rx="2" fill="#CECAC0" opacity="0.7"/>
+  <rect x="18" y="72" width="88" height="5" rx="2" fill="#CECAC0" opacity="0.7"/>
+  <rect x="18" y="84" width="62" height="5" rx="2" fill="#CECAC0" opacity="0.6"/>
+  <rect x="18" y="96" width="80" height="5" rx="2" fill="#CECAC0" opacity="0.6"/>
+  <rect x="18" y="108" width="70" height="5" rx="2" fill="#CECAC0" opacity="0.5"/>
+  <!-- Dog-ear fold on top-right corner (messy) -->
+  <path d="M120,18 L120,40 L98,18 Z" fill="#D4D0C4" stroke="#2C3E50" stroke-width="1.5"/>
+</svg>

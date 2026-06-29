@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 220" width="140" height="220">
+  <!-- Frizzled/disheveled hair (spiky, messy) -->
+  <ellipse cx="70" cy="42" rx="36" ry="24" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Messy hair spikes -->
+  <path d="M34,42 L26,22 L36,36" fill="#2A3020" stroke="#2C3E50" stroke-width="1.5"/>
+  <path d="M46,30 L44,12 L56,28" fill="#2A3020" stroke="#2C3E50" stroke-width="1.5"/>
+  <path d="M68,24 L70,6 L76,24" fill="#2A3020" stroke="#2C3E50" stroke-width="1.5"/>
+  <path d="M90,28 L98,12 L96,30" fill="#2A3020" stroke="#2C3E50" stroke-width="1.5"/>
+  <path d="M104,38 L116,24 L108,42" fill="#2A3020" stroke="#2C3E50" stroke-width="1.5"/>
+  <!-- Hair sides (messy) -->
+  <ellipse cx="36" cy="58" rx="14" ry="20" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="104" cy="58" rx="14" ry="20" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Head (slightly tilted, stressed) -->
+  <ellipse cx="70" cy="68" rx="32" ry="36" fill="#C8A882" stroke="#2C3E50" stroke-width="3" transform="rotate(-6 70 68)"/>
+  <!-- Dark circles under eyes -->
+  <ellipse cx="57" cy="74" rx="9" ry="5" fill="#8A7A68" opacity="0.5"/>
+  <ellipse cx="83" cy="74" rx="9" ry="5" fill="#8A7A68" opacity="0.5"/>
+  <!-- Eyes (wide, slightly crazed) -->
+  <ellipse cx="57" cy="68" rx="8" ry="9" fill="white" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="57" cy="70" rx="5" ry="6" fill="#1A1810"/>
+  <ellipse cx="83" cy="68" rx="8" ry="9" fill="white" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="83" cy="70" rx="5" ry="6" fill="#1A1810"/>
+  <!-- Eye highlight (wide, stressed look) -->
+  <circle cx="60" cy="66" r="2.5" fill="white"/>
+  <circle cx="86" cy="66" r="2.5" fill="white"/>
+  <!-- Eyebrows (furrowed, stressed) -->
+  <path d="M48,56 Q57,52 64,56" fill="none" stroke="#2A3020" stroke-width="3" stroke-linecap="round"/>
+  <path d="M76,56 Q83,52 92,56" fill="none" stroke="#2A3020" stroke-width="3" stroke-linecap="round"/>
+  <!-- Mouth (trembling / nervous grin) -->
+  <path d="M59,88 Q70,84 81,88" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <path d="M61,90 Q70,88 79,90" fill="none" stroke="#2C3E50" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+  <!-- Sweat drops -->
+  <path d="M100,50 Q102,46 100,42 Q98,46 100,50 Z" fill="#9AAAB5" opacity="0.8"/>
+  <path d="M110,62 Q112,57 110,52 Q108,57 110,62 Z" fill="#9AAAB5" opacity="0.6"/>
+  <!-- Stress marks (jiitter lines) -->
+  <line x1="108" y1="55" x2="116" y2="50" stroke="#B0505050" stroke-width="2" opacity="0.7"/>
+  <line x1="112" y1="62" x2="122" y2="58" stroke="#B05050" stroke-width="2" opacity="0.5"/>
+  <!-- Neck -->
+  <rect x="64" y="100" width="12" height="14" rx="4" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Body (hunched, slightly forward) -->
+  <path d="M28,112 Q18,120 18,150 L22,196 L118,196 L122,150 Q122,120 112,112 Z" fill="#8A9AA0" stroke="#2C3E50" stroke-width="3" transform="rotate(5 70 154)"/>
+  <!-- Left arm (tense/rigid) -->
+  <rect x="8" y="114" width="20" height="68" rx="10" fill="#8A9AA0" stroke="#2C3E50" stroke-width="2.5" transform="rotate(15 18 148)"/>
+  <ellipse cx="6" cy="180" rx="11" ry="9" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Right arm (raised slightly, tense) -->
+  <rect x="112" y="114" width="20" height="68" rx="10" fill="#8A9AA0" stroke="#2C3E50" stroke-width="2.5" transform="rotate(-15 122 148)"/>
+  <ellipse cx="134" cy="180" rx="11" ry="9" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Seated lower body -->
+  <rect x="30" y="190" width="80" height="28" rx="8" fill="#4A5C6A" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

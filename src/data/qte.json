@@ -1,0 +1,73 @@
+{
+  "_comment": "6 个 QTE 步骤与生成规则，对应制作方案第 14 节。QTE 不新增可交互对象，targetObjectId 只能取 computer / phone / takeout_box / files / protagonist / keyboard。layer 取值：screen（屏幕像在工作）/ desk（桌面像在工作）/ body（人像在工作），对应制作方案 14.2 的三个伪装层级。",
+  "qteSteps": {
+    "switch_safe_work": {
+      "id": "switch_safe_work",
+      "displayName": "切回安全工作页",
+      "targetObjectId": "computer",
+      "clearsDanger": "unsafe_screen",
+      "layer": "screen",
+      "promptTextKey": "qtePrompts.switch_safe_work",
+      "successTextKey": "qteSuccess.switch_safe_work",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    },
+    "put_away_phone": {
+      "id": "put_away_phone",
+      "displayName": "收起手机",
+      "targetObjectId": "phone",
+      "clearsDanger": "phone_lit",
+      "layer": "desk",
+      "promptTextKey": "qtePrompts.put_away_phone",
+      "successTextKey": "qteSuccess.put_away_phone",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    },
+    "put_away_takeout": {
+      "id": "put_away_takeout",
+      "displayName": "收起外卖",
+      "targetObjectId": "takeout_box",
+      "clearsDanger": "takeout_open",
+      "layer": "desk",
+      "promptTextKey": "qtePrompts.put_away_takeout",
+      "successTextKey": "qteSuccess.put_away_takeout",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    },
+    "organize_work_trace": {
+      "id": "organize_work_trace",
+      "displayName": "整理工作痕迹",
+      "targetObjectId": "files",
+      "clearsDanger": "desk_empty",
+      "layer": "desk",
+      "promptTextKey": "qtePrompts.organize_work_trace",
+      "successTextKey": "qteSuccess.organize_work_trace",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    },
+    "sit_up": {
+      "id": "sit_up",
+      "displayName": "坐直",
+      "targetObjectId": "protagonist",
+      "clearsDanger": "body_slack",
+      "layer": "body",
+      "promptTextKey": "qtePrompts.sit_up",
+      "successTextKey": "qteSuccess.sit_up",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    },
+    "type_keyboard": {
+      "id": "type_keyboard",
+      "displayName": "敲键盘",
+      "targetObjectId": "keyboard",
+      "clearsDanger": "body_slack",
+      "layer": "body",
+      "promptTextKey": "qtePrompts.type_keyboard",
+      "successTextKey": "qteSuccess.type_keyboard",
+      "wrongTextKeys": ["qteWrong.generic.0", "qteWrong.generic.1", "qteWrong.generic.2"]
+    }
+  },
+  "qteRules": {
+    "qteMaxSteps": 5,
+    "wrongClickPenaltySeconds": 0.5,
+    "wrongClickImmediateFail": false,
+    "generateFromRealDangersFirst": true,
+    "fillerSteps": ["sit_up", "type_keyboard"],
+    "priorityBasedOnDangers": true
+  }
+}

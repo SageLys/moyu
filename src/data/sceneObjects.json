@@ -1,0 +1,257 @@
+{
+  "_comment": "场景可点击对象定义，对应制作方案第 7 节。本步骤（docs/SCENE_LAYOUT.md）补充了 position/size/hitbox/layer/normalStates/dangerStates/qteHighlightStyle/wrongClickFeedback，坐标与 docs/SCENE_LAYOUT.md 第 4 节对象布局表一一对应，修改任一处需同步另一处。assetKey 是程序侧引用的稳定逻辑键，placeholderAsset 是当前阶段的占位素材路径；后续替换美术资源时只更新 placeholderAsset 指向的文件内容，不改动 assetKey 与对象 id（参见 docs/TECH_DECISION.md 素材替换约束）。leader 是视觉压力源，不作为常规点击对象：clickableInNormal 和 clickableInQte 均为 false，hitbox 为 null，渲染于 midground 层而非 interactables 层。QTE 只允许 computer / phone / takeout_box / files / protagonist / keyboard 这 6 个对象，对应 qteHighlightStyle 非 null。本文件仍为纯数据，不含正式玩法判定逻辑；normalStates/dangerStates 只是状态枚举字符串，不实现状态切换代码。",
+  "sceneObjects": {
+    "computer": {
+      "id": "computer",
+      "displayName": "电脑",
+      "role": "screen_disguise",
+      "layer": "interactables",
+      "position": { "x": 640, "y": 420 },
+      "size": { "width": 200, "height": 170 },
+      "hitbox": { "x": 540, "y": 335, "width": 200, "height": 170 },
+      "clickableInNormal": true,
+      "clickableInQte": true,
+      "normalStates": ["idle_safe_work", "idle_fishing"],
+      "dangerStates": ["unsafe_screen"],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.computer",
+      "placeholderAsset": "assets/placeholders/computer.svg",
+      "hoverTextKey": "hoverTexts.objects.computer"
+    },
+    "keyboard": {
+      "id": "keyboard",
+      "displayName": "键盘",
+      "role": "qte_body_prop",
+      "layer": "interactables",
+      "position": { "x": 640, "y": 565 },
+      "size": { "width": 160, "height": 50 },
+      "hitbox": { "x": 560, "y": 540, "width": 160, "height": 50 },
+      "clickableInNormal": false,
+      "clickableInQte": true,
+      "normalStates": ["idle"],
+      "dangerStates": [],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.keyboard",
+      "placeholderAsset": "assets/placeholders/keyboard.svg",
+      "hoverTextKey": "hoverTexts.objects.keyboard"
+    },
+    "phone": {
+      "id": "phone",
+      "displayName": "手机",
+      "role": "desk_item",
+      "layer": "interactables",
+      "position": { "x": 520, "y": 575 },
+      "size": { "width": 70, "height": 50 },
+      "hitbox": { "x": 475, "y": 540, "width": 90, "height": 70 },
+      "clickableInNormal": true,
+      "clickableInQte": true,
+      "normalStates": ["idle_off"],
+      "dangerStates": ["phone_lit"],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.phone",
+      "placeholderAsset": "assets/placeholders/phone.svg",
+      "hoverTextKey": "hoverTexts.objects.phone"
+    },
+    "takeout_box": {
+      "id": "takeout_box",
+      "displayName": "外卖盒",
+      "role": "desk_item",
+      "layer": "interactables",
+      "position": { "x": 760, "y": 570 },
+      "size": { "width": 110, "height": 80 },
+      "hitbox": { "x": 695, "y": 520, "width": 130, "height": 100 },
+      "clickableInNormal": true,
+      "clickableInQte": true,
+      "normalStates": ["idle_closed"],
+      "dangerStates": ["takeout_open"],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.takeout_box",
+      "placeholderAsset": "assets/placeholders/takeout_box.svg",
+      "hoverTextKey": "hoverTexts.objects.takeout_box"
+    },
+    "coffee": {
+      "id": "coffee",
+      "displayName": "咖啡杯",
+      "role": "desk_item",
+      "layer": "interactables",
+      "position": { "x": 460, "y": 560 },
+      "size": { "width": 50, "height": 64 },
+      "hitbox": { "x": 425, "y": 518, "width": 70, "height": 84 },
+      "clickableInNormal": true,
+      "clickableInQte": false,
+      "normalStates": ["idle_full"],
+      "dangerStates": [],
+      "qteHighlightStyle": null,
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.coffee",
+      "placeholderAsset": "assets/placeholders/coffee.svg",
+      "hoverTextKey": "hoverTexts.objects.coffee"
+    },
+    "files": {
+      "id": "files",
+      "displayName": "文件堆/夹板",
+      "role": "desk_item",
+      "layer": "interactables",
+      "position": { "x": 1000, "y": 520 },
+      "size": { "width": 140, "height": 160 },
+      "hitbox": { "x": 930, "y": 440, "width": 140, "height": 160 },
+      "clickableInNormal": true,
+      "clickableInQte": true,
+      "normalStates": ["idle_tidy"],
+      "dangerStates": ["desk_empty"],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "interactables.files",
+      "placeholderAsset": "assets/placeholders/files.svg",
+      "hoverTextKey": "hoverTexts.objects.files"
+    },
+    "coworker": {
+      "id": "coworker",
+      "displayName": "邻座同事",
+      "role": "coworker_menu_trigger",
+      "layer": "interactables",
+      "position": { "x": 220, "y": 460 },
+      "size": { "width": 140, "height": 220 },
+      "hitbox": { "x": 150, "y": 350, "width": 140, "height": 220 },
+      "clickableInNormal": true,
+      "clickableInQte": false,
+      "normalStates": ["idle"],
+      "dangerStates": [],
+      "qteHighlightStyle": null,
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "characters.coworker",
+      "placeholderAsset": "assets/placeholders/coworker.svg",
+      "hoverTextKey": "hoverTexts.objects.coworker"
+    },
+    "protagonist": {
+      "id": "protagonist",
+      "displayName": "主角",
+      "role": "qte_body_prop",
+      "layer": "interactables",
+      "position": { "x": 660, "y": 455 },
+      "size": { "width": 170, "height": 230 },
+      "hitbox": { "x": 575, "y": 340, "width": 170, "height": 230 },
+      "clickableInNormal": false,
+      "clickableInQte": true,
+      "normalStates": ["idle_seated"],
+      "dangerStates": ["body_slack"],
+      "qteHighlightStyle": {
+        "strokeColor": "#FFB000",
+        "strokeWidthPx": 4,
+        "glow": true,
+        "pulseAnimation": "scale 1.00-1.05, 1.2s loop",
+        "priorityOverHover": true
+      },
+      "wrongClickFeedback": {
+        "flashColor": "#FF3B30",
+        "flashDurationSec": 0.18,
+        "style": "object_red_tint_flash",
+        "countdownShake": true,
+        "triggersOnlyDuringQte": true
+      },
+      "assetKey": "characters.protagonist",
+      "placeholderAsset": "assets/placeholders/protagonist.svg",
+      "hoverTextKey": "hoverTexts.objects.protagonist"
+    },
+    "leader": {
+      "id": "leader",
+      "displayName": "领导",
+      "role": "visual_pressure_source",
+      "layer": "midground",
+      "position": { "x": 640, "y": 245 },
+      "size": { "width": 90, "height": 170 },
+      "hitbox": null,
+      "clickableInNormal": false,
+      "clickableInQte": false,
+      "normalStates": ["patrol_far", "approaching", "checking", "leaving"],
+      "dangerStates": [],
+      "qteHighlightStyle": null,
+      "wrongClickFeedback": null,
+      "patrolAnchors": {
+        "patrol_far": { "xRange": [120, 1160], "y": 245, "width": 90, "height": 170 },
+        "approaching": { "xRange": [1160, 700], "yRange": [245, 300], "widthRange": [90, 130], "heightRange": [170, 230] },
+        "checking": { "x": 700, "y": 310, "width": 130, "height": 230 },
+        "leaving": { "xRange": [700, 1160], "yRange": [310, 245], "widthRange": [130, 90], "heightRange": [230, 170] }
+      },
+      "assetKey": "characters.leader",
+      "placeholderAsset": "assets/placeholders/leader.svg",
+      "hoverTextKey": "hoverTexts.objects.leader"
+    }
+  }
+}

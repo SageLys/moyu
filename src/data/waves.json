@@ -1,0 +1,30 @@
+{
+  "_comment": "领导巡查波次参数，对应制作方案第 13 节。patrolInterval/warningTime 单位为秒。第 6 波及以后使用区间随机或循环取值，不使用固定表。",
+  "fixedWaves": [
+    { "wave": 1, "patrolInterval": 35, "warningTime": 8, "qteSteps": 2 },
+    { "wave": 2, "patrolInterval": 32, "warningTime": 7, "qteSteps": 2 },
+    { "wave": 3, "patrolInterval": 28, "warningTime": 6, "qteSteps": 3 },
+    { "wave": 4, "patrolInterval": 24, "warningTime": 5, "qteSteps": 3 },
+    { "wave": 5, "patrolInterval": 20, "warningTime": 4, "qteSteps": 4 }
+  ],
+  "wave6Plus": {
+    "patrolIntervalMin": 15,
+    "patrolIntervalMax": 18,
+    "warningTimeMin": 3,
+    "warningTimeMax": 4,
+    "qteStepsMin": 4,
+    "qteStepsMax": 5
+  },
+  "progressionRules": {
+    "increaseWaveOnSuccess": true,
+    "increaseWaveOnFail": true,
+    "description": "每次领导巡查结束后波次 +1，成功与失败都会推进波次。失败会额外降低精神值与信任值（数值见 qte.json 中后续步骤补充的结算配置，本文件不重复定义）。第 6 波后参数在 wave6Plus 区间内循环或随机微调。"
+  },
+  "coworkerWatchEffect": {
+    "consumesBuff": "coworkerWatch",
+    "warningTimeBonusMin": 1.5,
+    "warningTimeBonusMax": 2,
+    "appliesToNextWarningOnly": true,
+    "description": "请同事望风后，下一次领导预警时间增加 1.5 至 2 秒，只作用一次，使用后清除 coworkerWatch 这一 buff（buff 由 actions.json 中的 coworker_watch 动作设置）。"
+  }
+}

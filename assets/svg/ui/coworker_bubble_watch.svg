@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70">
+  <!-- Bubble circle background -->
+  <circle cx="35" cy="35" r="32" fill="#3A5A6A" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Inner highlight ring -->
+  <circle cx="35" cy="35" r="28" fill="none" stroke="#5A7A8A" stroke-width="1" opacity="0.5"/>
+  <!-- Eye icon (望风 - lookout/watch) -->
+  <!-- Outer eye shape -->
+  <path d="M14,35 Q35,18 56,35 Q35,52 14,35 Z" fill="#C8D8E0" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Pupil -->
+  <circle cx="35" cy="35" r="9" fill="#2A3840" stroke="#2C3E50" stroke-width="1.5"/>
+  <!-- Iris -->
+  <circle cx="35" cy="35" r="6" fill="#4A6880"/>
+  <!-- Eye highlight -->
+  <circle cx="38" cy="32" r="2.5" fill="white" opacity="0.9"/>
+  <!-- Eyelashes/scanning lines (radar feel) -->
+  <line x1="35" y1="20" x2="35" y2="16" stroke="#8AAAB8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="46" y1="24" x2="49" y2="21" stroke="#8AAAB8" stroke-width="2" stroke-linecap="round"/>
+  <line x1="24" y1="24" x2="21" y2="21" stroke="#8AAAB8" stroke-width="2" stroke-linecap="round"/>
+</svg>

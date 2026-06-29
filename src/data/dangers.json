@@ -1,0 +1,55 @@
+{
+  "_comment": "现场危险状态配置，对应制作方案第 12 节。qteStepId 统一使用数组，即使只对应一个 QTE 步骤，便于程序统一处理。producedBy / clearedBy 中的值通常是 actions.json 里的动作 id；若危险状态由计时器或系统规则产生（不是单一动作直接触发），使用下方注明的特殊符号 id，并在 description 中说明触发条件。",
+  "dangers": {
+    "unsafe_screen": {
+      "id": "unsafe_screen",
+      "displayName": "摸鱼页打开",
+      "producedBy": ["open_fishing_page"],
+      "clearedBy": ["switch_safe_work"],
+      "qteStepId": ["switch_safe_work"],
+      "priority": 1,
+      "visualState": "screen_fishing_glow",
+      "description": "电脑屏幕处于摸鱼页状态。打开摸鱼网页时产生，切回安全工作页时清除。"
+    },
+    "phone_lit": {
+      "id": "phone_lit",
+      "displayName": "手机亮屏",
+      "producedBy": ["check_phone"],
+      "clearedBy": [],
+      "qteStepId": ["put_away_phone"],
+      "priority": 2,
+      "visualState": "phone_screen_lit",
+      "description": "手机处于亮屏状态。看手机时产生，只能在 QTE 中通过收起手机清除，平时动作没有对应的主动清除项。"
+    },
+    "takeout_open": {
+      "id": "takeout_open",
+      "displayName": "外卖摊开",
+      "producedBy": ["eat_takeout"],
+      "clearedBy": [],
+      "qteStepId": ["put_away_takeout"],
+      "priority": 3,
+      "visualState": "takeout_box_open_icon",
+      "description": "外卖盒处于摊开状态。吃外卖时产生，只能在 QTE 中通过收起外卖清除，平时动作没有对应的主动清除项。"
+    },
+    "desk_empty": {
+      "id": "desk_empty",
+      "displayName": "工位太空",
+      "producedBy": ["workTraceTimer_timeout"],
+      "clearedBy": ["switch_safe_work", "organize_work_trace"],
+      "qteStepId": ["organize_work_trace"],
+      "priority": 4,
+      "visualState": "desk_clutter_warning_icon",
+      "description": "由 workTraceTimer 计时器产生，不由单一动作直接触发：执行切到安全工作页或整理工作痕迹会清零计时器，计时器持续增加超过阈值（制作方案 12.2 建议 20 秒，随波次最低可降到 14 秒，具体阈值由后续波次系统读取并实现，本文件不写入阈值数值）后产生该状态。"
+    },
+    "body_slack": {
+      "id": "body_slack",
+      "displayName": "人体不像工作",
+      "producedBy": ["qte_filler_generation"],
+      "clearedBy": [],
+      "qteStepId": ["sit_up", "type_keyboard"],
+      "priority": 5,
+      "visualState": "posture_slack_overlay",
+      "description": "主要作为 QTE 补充项使用，不由单一平时动作触发。生成条件（制作方案 12.3）：当前真实危险状态数量低于本波次 QTE 步数需求、玩家近期连续执行摸鱼类动作、或波次较高需要补齐“人像在工作”层级。由 QTE 生成系统在判定时动态产生，本文件不写入具体判定逻辑。"
+    }
+  }
+}

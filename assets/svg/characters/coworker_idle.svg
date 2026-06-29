@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 220" width="140" height="220">
+  <!-- Hair (back) -->
+  <ellipse cx="70" cy="44" rx="34" ry="22" fill="#2A3020" stroke="#2C3E50" stroke-width="2.5"/>
+  <ellipse cx="38" cy="57" rx="12" ry="17" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="102" cy="57" rx="12" ry="17" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Head -->
+  <ellipse cx="70" cy="66" rx="32" ry="36" fill="#C8A882" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Hair front -->
+  <ellipse cx="70" cy="42" rx="32" ry="18" fill="#2A3020" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Eyes (neutral forward gaze) -->
+  <ellipse cx="58" cy="66" rx="6" ry="7" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <ellipse cx="58" cy="67" rx="4" ry="5" fill="#1A1810"/>
+  <ellipse cx="82" cy="66" rx="6" ry="7" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <ellipse cx="82" cy="67" rx="4" ry="5" fill="#1A1810"/>
+  <!-- Eyebrows (neutral) -->
+  <path d="M51,57 Q58,54 65,57" fill="none" stroke="#2A3020" stroke-width="2" stroke-linecap="round"/>
+  <path d="M75,57 Q82,54 89,57" fill="none" stroke="#2A3020" stroke-width="2" stroke-linecap="round"/>
+  <!-- Mouth (neutral/slight smile) -->
+  <path d="M62,84 Q70,89 78,84" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Neck -->
+  <rect x="64" y="98" width="12" height="14" rx="4" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Body/shirt -->
+  <path d="M32,110 Q26,114 24,142 L26,192 L114,192 L116,142 Q114,114 108,110 Z" fill="#8A9AA0" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Left arm -->
+  <rect x="10" y="112" width="20" height="64" rx="10" fill="#8A9AA0" stroke="#2C3E50" stroke-width="2.5" transform="rotate(18 20 144)"/>
+  <ellipse cx="8" cy="175" rx="11" ry="9" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Right arm -->
+  <rect x="110" y="112" width="20" height="64" rx="10" fill="#8A9AA0" stroke="#2C3E50" stroke-width="2.5" transform="rotate(-18 120 144)"/>
+  <ellipse cx="132" cy="175" rx="11" ry="9" fill="#C8A882" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Seated lower body -->
+  <rect x="32" y="188" width="76" height="28" rx="8" fill="#4A5C6A" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

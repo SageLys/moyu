@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 64" width="1280" height="64">
+  <!-- Bar background -->
+  <rect x="0" y="0" width="1280" height="64" fill="#2A3440" stroke="none"/>
+  <!-- Bottom border line -->
+  <line x1="0" y1="63" x2="1280" y2="63" stroke="#1A2228" stroke-width="2"/>
+  <!-- Top subtle highlight -->
+  <line x1="0" y1="0" x2="1280" y2="0" stroke="#3E4E5C" stroke-width="1"/>
+
+  <!-- Spirit bar group (left) -->
+  <text x="18" y="22" font-family="sans-serif" font-size="11" fill="#8AAAB8" opacity="0.9">精神</text>
+  <!-- Spirit bar track -->
+  <rect x="18" y="28" width="260" height="16" rx="7" fill="#1A2228" stroke="#3A4A58" stroke-width="1.5"/>
+  <!-- Spirit bar fill (~75%) -->
+  <rect x="20" y="30" width="192" height="12" rx="5" fill="#7A9FA8"/>
+  <!-- Spirit bar inner highlight -->
+  <rect x="20" y="30" width="192" height="5" rx="5" fill="#9ABBC4" opacity="0.4"/>
+
+  <!-- Satiety bar group (center-left) -->
+  <text x="304" y="22" font-family="sans-serif" font-size="11" fill="#C8A46A" opacity="0.9">饱腹</text>
+  <!-- Satiety bar track -->
+  <rect x="304" y="28" width="260" height="16" rx="7" fill="#1A2228" stroke="#3A4A58" stroke-width="1.5"/>
+  <!-- Satiety bar fill (~60%) -->
+  <rect x="306" y="30" width="152" height="12" rx="5" fill="#C8A46A"/>
+  <rect x="306" y="30" width="152" height="5" rx="5" fill="#DEC080" opacity="0.4"/>
+
+  <!-- Trust bar group (center-right) -->
+  <text x="590" y="22" font-family="sans-serif" font-size="11" fill="#7A9E7A" opacity="0.9">信任</text>
+  <!-- Trust bar track -->
+  <rect x="590" y="28" width="260" height="16" rx="7" fill="#1A2228" stroke="#3A4A58" stroke-width="1.5"/>
+  <!-- Trust bar fill (~85%) -->
+  <rect x="592" y="30" width="218" height="12" rx="5" fill="#7A9E7A"/>
+  <rect x="592" y="30" width="218" height="5" rx="5" fill="#9AB89A" opacity="0.4"/>
+
+  <!-- Separator -->
+  <line x1="880" y1="12" x2="880" y2="52" stroke="#3A4A58" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Time display area (right side) -->
+  <!-- Time icon -->
+  <circle cx="912" cy="32" r="12" fill="none" stroke="#5A7080" stroke-width="2"/>
+  <line x1="912" y1="32" x2="912" y2="24" stroke="#5A7080" stroke-width="2" stroke-linecap="round"/>
+  <line x1="912" y1="32" x2="918" y2="32" stroke="#5A7080" stroke-width="2" stroke-linecap="round"/>
+  <!-- Time placeholder blocks -->
+  <rect x="932" y="24" width="64" height="14" rx="4" fill="#3A4A58" opacity="0.8"/>
+  <rect x="932" y="42" width="42" height="10" rx="3" fill="#2E3C48" opacity="0.6"/>
+
+  <!-- Wave display area (far right) -->
+  <line x1="1014" y1="12" x2="1014" y2="52" stroke="#3A4A58" stroke-width="1.5" opacity="0.6"/>
+  <rect x="1028" y="22" width="80" height="20" rx="4" fill="#3A4A58" opacity="0.7"/>
+  <rect x="1120" y="22" width="60" height="20" rx="4" fill="#2E3C48" opacity="0.6"/>
+  <!-- Wave icon dots -->
+  <circle cx="1200" cy="32" r="5" fill="#5A7080" opacity="0.8"/>
+  <circle cx="1214" cy="32" r="5" fill="#4A6070" opacity="0.6"/>
+  <circle cx="1228" cy="32" r="5" fill="#3A5060" opacity="0.4"/>
+  <circle cx="1242" cy="32" r="5" fill="#2A4050" opacity="0.3"/>
+</svg>

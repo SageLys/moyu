@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 230" width="170" height="230">
+  <!-- Hair (back layer) -->
+  <ellipse cx="85" cy="44" rx="38" ry="24" fill="#3A2E22" stroke="#2C3E50" stroke-width="2.5"/>
+  <ellipse cx="48" cy="58" rx="13" ry="18" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="122" cy="58" rx="13" ry="18" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Head (upright, alert) -->
+  <ellipse cx="85" cy="66" rx="36" ry="38" fill="#D4A07A" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Hair front -->
+  <ellipse cx="85" cy="42" rx="36" ry="20" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Eyes (wide open, alert) -->
+  <ellipse cx="71" cy="66" rx="8" ry="9" fill="white" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="71" cy="66" rx="5.5" ry="6.5" fill="#2A2018"/>
+  <!-- Highlight dots -->
+  <circle cx="73" cy="63" r="2" fill="white"/>
+  <ellipse cx="99" cy="66" rx="8" ry="9" fill="white" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="99" cy="66" rx="5.5" ry="6.5" fill="#2A2018"/>
+  <circle cx="101" cy="63" r="2" fill="white"/>
+  <!-- Eyebrows (raised / alert) -->
+  <path d="M62,52 Q71,48 80,52" fill="none" stroke="#3A2E22" stroke-width="3" stroke-linecap="round"/>
+  <path d="M90,52 Q99,48 108,52" fill="none" stroke="#3A2E22" stroke-width="3" stroke-linecap="round"/>
+  <!-- Mouth (tightly set, composed) -->
+  <path d="M76,86 Q85,88 94,86" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Neck (straight) -->
+  <rect x="79" y="100" width="12" height="16" rx="4" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Collar -->
+  <path d="M70,114 L85,124 L100,114" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Body/shirt (perfectly straight, upright posture) -->
+  <path d="M44,114 Q36,118 36,148 L38,200 L132,200 L134,148 Q132,118 126,114 Z" fill="#9AAAB5" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Shirt center line -->
+  <line x1="85" y1="114" x2="85" y2="200" stroke="#8898A5" stroke-width="1.5" opacity="0.5"/>
+  <!-- Left arm (positioned at side, professional posture) -->
+  <rect x="22" y="116" width="22" height="72" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(8 33 152)"/>
+  <ellipse cx="24" cy="186" rx="12" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Right arm (positioned symmetrically) -->
+  <rect x="126" y="116" width="22" height="72" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(-8 137 152)"/>
+  <ellipse cx="146" cy="186" rx="12" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Seated legs -->
+  <rect x="40" y="196" width="90" height="30" rx="8" fill="#5A6C7A" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

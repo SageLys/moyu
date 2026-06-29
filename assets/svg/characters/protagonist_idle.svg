@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 230" width="170" height="230">
+  <!-- Hair (back layer) -->
+  <ellipse cx="85" cy="48" rx="38" ry="24" fill="#3A2E22" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Hair side tufts -->
+  <ellipse cx="49" cy="62" rx="13" ry="18" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="121" cy="62" rx="13" ry="18" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Head -->
+  <ellipse cx="85" cy="70" rx="36" ry="38" fill="#D4A07A" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Hair front top (covers head top) -->
+  <ellipse cx="85" cy="46" rx="36" ry="20" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Eyes (looking forward, relaxed) -->
+  <ellipse cx="71" cy="70" rx="7" ry="8" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <ellipse cx="71" cy="71" rx="4.5" ry="5.5" fill="#2A2018"/>
+  <ellipse cx="99" cy="70" rx="7" ry="8" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <ellipse cx="99" cy="71" rx="4.5" ry="5.5" fill="#2A2018"/>
+  <!-- Eyebrows (neutral/relaxed) -->
+  <path d="M63,60 Q71,57 79,60" fill="none" stroke="#3A2E22" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M91,60 Q99,57 107,60" fill="none" stroke="#3A2E22" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Mouth (neutral, slight focus) -->
+  <path d="M76,90 Q85,94 94,90" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Neck -->
+  <rect x="78" y="104" width="14" height="16" rx="4" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Collar -->
+  <path d="M68,118 L85,130 L102,118" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Body/shirt (slightly forward-leaning posture) -->
+  <path d="M40,118 Q32,122 30,150 L32,200 L138,200 L140,150 Q138,122 130,118 Z" fill="#9AAAB5" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Shirt center line -->
+  <line x1="85" y1="118" x2="85" y2="200" stroke="#8898A5" stroke-width="1.5" opacity="0.5"/>
+  <!-- Left arm (resting forward on desk) -->
+  <rect x="18" y="120" width="22" height="70" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(22 29 155)"/>
+  <!-- Left hand -->
+  <ellipse cx="16" cy="188" rx="12" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Right arm (resting forward) -->
+  <rect x="130" y="120" width="22" height="70" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(-22 141 155)"/>
+  <!-- Right hand -->
+  <ellipse cx="154" cy="188" rx="12" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Seated legs / lap area -->
+  <rect x="40" y="196" width="90" height="30" rx="8" fill="#5A6C7A" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

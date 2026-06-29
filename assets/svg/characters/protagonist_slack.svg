@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 230" width="170" height="230">
+  <!-- Body leaned back (tilted backward significantly) -->
+  <path d="M38,130 Q28,136 28,165 L32,210 L138,210 L142,165 Q142,136 132,130 Z" fill="#9AAAB5" stroke="#2C3E50" stroke-width="3" transform="rotate(12 85 170)"/>
+  <!-- Shirt center line -->
+  <line x1="86" y1="130" x2="90" y2="208" stroke="#8898A5" stroke-width="1.5" opacity="0.5" transform="rotate(12 85 170)"/>
+  <!-- Neck (tilted with body) -->
+  <rect x="78" y="106" width="14" height="18" rx="4" fill="#D4A07A" stroke="#2C3E50" stroke-width="2" transform="rotate(12 85 115)"/>
+  <!-- Hair (back layer) -->
+  <ellipse cx="88" cy="50" rx="38" ry="24" fill="#3A2E22" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Hair side tufts -->
+  <ellipse cx="52" cy="65" rx="14" ry="18" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="124" cy="62" rx="13" ry="17" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Head (tilted/lolling to right) -->
+  <ellipse cx="88" cy="72" rx="36" ry="38" fill="#D4A07A" stroke="#2C3E50" stroke-width="3" transform="rotate(18 88 72)"/>
+  <!-- Hair front top -->
+  <ellipse cx="88" cy="48" rx="36" ry="20" fill="#3A2E22" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Eyes (half-closed / drowsy) -->
+  <ellipse cx="74" cy="72" rx="7" ry="8" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <!-- Droopy eyelid (covers top half) -->
+  <rect x="67" y="65" width="14" height="8" rx="2" fill="#D4A07A"/>
+  <line x1="67" y1="72" x2="81" y2="72" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="74" cy="74" rx="4" ry="3.5" fill="#2A2018"/>
+  <ellipse cx="102" cy="72" rx="7" ry="8" fill="white" stroke="#2C3E50" stroke-width="1.5"/>
+  <!-- Droopy eyelid right -->
+  <rect x="95" y="65" width="14" height="8" rx="2" fill="#D4A07A"/>
+  <line x1="95" y1="72" x2="109" y2="72" stroke="#2C3E50" stroke-width="2"/>
+  <ellipse cx="102" cy="74" rx="4" ry="3.5" fill="#2A2018"/>
+  <!-- Eyebrows (low/slouching) -->
+  <path d="M67,65 Q74,63 81,65" fill="none" stroke="#3A2E22" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M95,65 Q102,63 109,65" fill="none" stroke="#3A2E22" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Mouth (slightly open / zoned out) -->
+  <path d="M78,92 Q88,90 98,92" fill="none" stroke="#2C3E50" stroke-width="2" stroke-linecap="round"/>
+  <!-- Small open mouth gap -->
+  <ellipse cx="88" cy="93" rx="5" ry="2.5" fill="#8B4040" opacity="0.7"/>
+  <!-- Left arm (hanging loose to side) -->
+  <rect x="12" y="128" width="20" height="72" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(35 22 164)"/>
+  <ellipse cx="4" cy="195" rx="11" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Right arm (hanging/dangling) -->
+  <rect x="138" y="128" width="20" height="72" rx="10" fill="#9AAAB5" stroke="#2C3E50" stroke-width="2.5" transform="rotate(-35 148 164)"/>
+  <ellipse cx="163" cy="198" rx="11" ry="9" fill="#D4A07A" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Seated legs (slouched, one sticking forward) -->
+  <rect x="38" y="204" width="94" height="26" rx="8" fill="#5A6C7A" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

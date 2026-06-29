@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 140" width="220" height="140">
+  <!-- Desk surface top -->
+  <rect x="4" y="4" width="212" height="52" rx="6" fill="#C8BAA8" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Surface front edge -->
+  <rect x="4" y="50" width="212" height="6" rx="2" fill="#B8AA98"/>
+  <!-- Desk front panel -->
+  <rect x="4" y="52" width="212" height="82" rx="4" fill="#B5A89A" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Panel line -->
+  <line x1="4" y1="90" x2="216" y2="90" stroke="#A89888" stroke-width="1.5" opacity="0.6"/>
+  <!-- Left leg -->
+  <rect x="14" y="100" width="24" height="38" rx="4" fill="#A89888" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Right leg -->
+  <rect x="182" y="100" width="24" height="38" rx="4" fill="#A89888" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

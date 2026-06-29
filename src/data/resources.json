@@ -1,0 +1,45 @@
+{
+  "_comment": "明示资源与隐藏资源配置。策划可直接调整数值字段，程序侧不得硬编码这些数值。详见 docs/DATA_SCHEMA.md。",
+  "resources": {
+    "spirit": {
+      "id": "spirit",
+      "displayName": "精神值",
+      "initialValue": 75,
+      "min": 0,
+      "max": 100,
+      "baseDeltaPerSecond": -0.25,
+      "visible": true,
+      "description": "主角维持工作姿态的精神续航。归零方向：外星人相关异常事件。"
+    },
+    "satiety": {
+      "id": "satiety",
+      "displayName": "饱腹值",
+      "initialValue": 75,
+      "min": 0,
+      "max": 100,
+      "baseDeltaPerSecond": -0.20,
+      "visible": true,
+      "description": "主角维持身体运转的饱腹续航。归零方向：身体续航失效事件，不关联外星人。"
+    },
+    "trust": {
+      "id": "trust",
+      "displayName": "信任值",
+      "initialValue": 70,
+      "min": 0,
+      "max": 100,
+      "baseDeltaPerSecond": -0.15,
+      "visible": true,
+      "description": "领导与办公室系统对工位正常性的判断。归零方向：职场委婉清退事件。"
+    },
+    "coworkerSpirit": {
+      "id": "coworkerSpirit",
+      "displayName": "同事精神值",
+      "initialValue": 70,
+      "min": 0,
+      "max": 100,
+      "baseDeltaPerSecond": -0.03,
+      "visible": false,
+      "description": "隐藏资源，只通过底部提示栏暗示。归零方向：同事触发异常事件。"
+    }
+  }
+}
