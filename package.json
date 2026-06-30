@@ -8,13 +8,17 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "validate": "node tools/validate-config.mjs",
-    "test": "npm run validate"
+    "test:unit": "vitest run",
+    "test:smoke": "node tools/run-smoke.mjs",
+    "test": "npm run validate && npm run test:unit"
   },
   "dependencies": {
     "phaser": "^3.90.0"
   },
   "devDependencies": {
+    "puppeteer": "^25.2.1",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^4.1.9"
   }
 }

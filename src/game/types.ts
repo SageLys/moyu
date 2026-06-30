@@ -1,3 +1,3 @@
 export type ObjectId = string;
 
-export type SceneKey = 'BootScene';
+export type SceneKey = 'PreloadScene' | 'GameScene';

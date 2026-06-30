@@ -1,5 +1,9 @@
 {
-  "_comment": "工位太空计时器与人体不像工作 filler 的规则。程序侧读取本文件，不再把阈值写死在系统类里。",
+  "_comment": "工位太空计时器、人体不像工作 filler、首尾反馈档位阈值。程序侧读取本文件，不把阈值写死在逻辑代码里。feedback 为 M5 新增：资源低档提示与同事精神值暗示的分档阈值，对应制作方案 §15.1 与 §8.2。",
   "workTrace": { "baseThresholdSeconds": 20, "minThresholdSeconds": 14, "reducePerWaveAfter": 3, "reduceSecondsPerWave": 1 },
-  "bodySlack": { "enableAsQteFiller": true, "minWave": 1, "preferAlternatingSteps": true }
+  "bodySlack": { "enableAsQteFiller": true, "minWave": 1, "preferAlternatingSteps": true },
+  "feedback": {
+    "resourceBands": { "droppingBelow": 35, "criticalBelow": 20 },
+    "coworkerBands": { "highAtOrAbove": 50, "mediumAtOrAbove": 25 }
+  }
 }
