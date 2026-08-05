@@ -73,6 +73,10 @@ export function tickGame(state: GameState, dt: number): void {
         if (state.nextLeaderPatrol <= 0) {
           const waveCfg = getCurrentWaveConfig(state.wave);
           const warningTime = computeWarningTime(state, waveCfg.warningTime);
+          // 预警即"可收拾"的宽限窗口：进入时立即生成 QTE 步骤，玩家在倒计时内就能
+          // 点击目标提前收拾（提前清完 → applyQteSuccess 提前成功）。
+          state.qteSteps = generateQteSteps(state, waveCfg.qteSteps);
+          state.qteStepIndex = 0;
           state.leaderWarningRemaining = warningTime;
           state.currentMode = 'LEADER_WARNING';
         }
@@ -81,11 +85,12 @@ export function tickGame(state: GameState, dt: number): void {
     }
 
     case 'LEADER_WARNING': {
+      // 若玩家在宽限窗口内已清完全部步骤，applyQteStepClick→applyQteSuccess 会把 mode 切到
+      // QTE_SUCCESS，本分支不会再执行。倒计时耗尽仍有剩余步骤时进入严格 QTE 阶段（不重新生成，
+      // 保留宽限期已推进的进度）。
       state.leaderWarningRemaining = Math.max(0, state.leaderWarningRemaining - dt);
       if (state.leaderWarningRemaining <= 0) {
         const waveCfg = getCurrentWaveConfig(state.wave);
-        state.qteSteps = generateQteSteps(state, waveCfg.qteSteps);
-        state.qteStepIndex = 0;
         state.qteRemaining = waveCfg.warningTime;
         state.currentMode = 'QTE_ACTIVE';
       }

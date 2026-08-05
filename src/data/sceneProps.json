@@ -1,0 +1,21 @@
+{
+  "_comment": "非交互装饰道具层（办公桌等），纯数据驱动。渲染层按 x/y/width/height 放置对应 assetId（见 src/assets.ts），深度统一 DEPTH.deskProp，介于角色与桌面物件之间。坐标可用调参面板的布局模式实时拖动并导出后回填到本文件。asset 必须是 src/assets.ts AssetPaths 中已存在并预加载的 key。",
+  "props": [
+    {
+      "id": "main_desk",
+      "asset": "desk",
+      "x": 650,
+      "y": 597,
+      "width": 680,
+      "height": 122
+    },
+    {
+      "id": "coworker_desk",
+      "asset": "coworker_desk",
+      "x": 220,
+      "y": 597,
+      "width": 240,
+      "height": 122
+    }
+  ]
+}

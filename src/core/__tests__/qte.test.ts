@@ -130,6 +130,49 @@ describe('applyQteStepClick – wrong click', () => {
   });
 });
 
+describe('applyQteStepClick – 宽限窗口(LEADER_WARNING)也受理收拾点击', () => {
+  it('LEADER_WARNING 期间命中目标清除危险并推进', () => {
+    const state = createInitialGameState();
+    state.currentMode = 'LEADER_WARNING';
+    state.leaderWarningRemaining = 8;
+    setDanger(state, 'unsafe_screen');
+    state.qteSteps = generateQteSteps(state, 1);
+    state.qteStepIndex = 0;
+
+    const result = applyQteStepClick(state, 'computer');
+    expect(result.hit).toBe(true);
+    expect(state.activeDangers.has('unsafe_screen')).toBe(false);
+  });
+
+  it('LEADER_WARNING 期间错点扣减 leaderWarningRemaining（不扣 qteRemaining）', () => {
+    const state = createInitialGameState();
+    state.currentMode = 'LEADER_WARNING';
+    state.leaderWarningRemaining = 5;
+    state.qteRemaining = 0;
+    state.qteSteps = [
+      { stepId: 'switch_safe_work', targetObjectId: 'computer', clearsDanger: 'unsafe_screen' },
+    ];
+    state.qteStepIndex = 0;
+
+    const result = applyQteStepClick(state, 'phone'); // 错点
+    expect(result.hit).toBe(false);
+    expect(state.leaderWarningRemaining).toBeCloseTo(5 - 0.5, 5);
+    expect(state.qteRemaining).toBe(0);
+  });
+
+  it('宽限窗口内清完最后一步 → 提前成功(QTE_SUCCESS)', () => {
+    const state = createInitialGameState();
+    state.currentMode = 'LEADER_WARNING';
+    state.leaderWarningRemaining = 8;
+    state.qteSteps = generateQteSteps(state, 1);
+    state.qteStepIndex = 0;
+
+    const result = applyQteStepClick(state, state.qteSteps[0].targetObjectId);
+    expect(result.complete).toBe(true);
+    expect(state.currentMode).toBe('QTE_SUCCESS');
+  });
+});
+
 describe('applyQteSuccess', () => {
   it('applies success delta from qteOutcome', () => {
     const state = qteState();

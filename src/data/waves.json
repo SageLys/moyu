@@ -1,9 +1,9 @@
 {
   "_comment": "领导巡查波次参数，对应制作方案第 13 节。patrolInterval/warningTime 单位为秒。第 6 波及以后使用区间随机或循环取值，不使用固定表。",
   "fixedWaves": [
-    { "wave": 1, "patrolInterval": 35, "warningTime": 8, "qteSteps": 2 },
-    { "wave": 2, "patrolInterval": 32, "warningTime": 7, "qteSteps": 2 },
-    { "wave": 3, "patrolInterval": 28, "warningTime": 6, "qteSteps": 3 },
+    { "wave": 1, "patrolInterval": 24, "warningTime": 7, "qteSteps": 2 },
+    { "wave": 2, "patrolInterval": 22, "warningTime": 6, "qteSteps": 2 },
+    { "wave": 3, "patrolInterval": 20, "warningTime": 6, "qteSteps": 3 },
     { "wave": 4, "patrolInterval": 24, "warningTime": 5, "qteSteps": 3 },
     { "wave": 5, "patrolInterval": 20, "warningTime": 4, "qteSteps": 4 }
   ],

@@ -9,10 +9,13 @@ export const CANVAS_HEIGHT = 720;
 export const DEPTH = {
   background: 0,
   midground: 10,
-  // interactables 内部：先主角本体，再桌面物件
+  // interactables 内部：主角本体 < 同事 < 办公桌道具 < 桌面物件。
+  // deskProp 介于角色与桌面物件之间：办公桌前挡板遮住主角/同事下半身（不再"坐在地上"），
+  // 而桌面物件（电脑/键盘/手机…）渲染在桌面之上。
   protagonist: 20,
   coworker: 21,
-  deskItem: 22,
+  deskProp: 22,
+  deskItem: 24,
   dangerMarker: 28,
   hover: 40,
   qteHighlight: 45,

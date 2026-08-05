@@ -59,7 +59,8 @@ export function generateQteSteps(state: GameState, stepCount: number): QteStep[]
 }
 
 export function applyQteStepClick(state: GameState, clickedObjectId: ObjectId): QteClickResult {
-  if (state.currentMode !== 'QTE_ACTIVE') {
+  // 收拾点击在"宽限窗口(LEADER_WARNING)"与"严格 QTE(QTE_ACTIVE)"两个阶段都受理。
+  if (state.currentMode !== 'QTE_ACTIVE' && state.currentMode !== 'LEADER_WARNING') {
     return { hit: false, complete: false, feedbackText: '' };
   }
 
@@ -82,10 +83,13 @@ export function applyQteStepClick(state: GameState, clickedObjectId: ObjectId): 
     }
     return { hit: true, complete, feedbackText };
   } else {
-    state.qteRemaining = Math.max(
-      0,
-      state.qteRemaining - qteRules.wrongClickPenaltySeconds,
-    );
+    // 错点扣减当前阶段的倒计时（宽限期扣 leaderWarningRemaining，严格期扣 qteRemaining）。
+    const penalty = qteRules.wrongClickPenaltySeconds;
+    if (state.currentMode === 'LEADER_WARNING') {
+      state.leaderWarningRemaining = Math.max(0, state.leaderWarningRemaining - penalty);
+    } else {
+      state.qteRemaining = Math.max(0, state.qteRemaining - penalty);
+    }
     const stepCfg = getQteStep(currentStep.stepId);
     const wrongKey = stepCfg.wrongTextKeys[0] ?? '';
     const resolved = resolveCopyText(wrongKey);

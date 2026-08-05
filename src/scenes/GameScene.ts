@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { CANVAS_HEIGHT, CANVAS_WIDTH, DEPTH } from '../game/constants';
-import { sceneObjects, getQteStep, gameRules } from '../core/config';
+import { sceneObjects, sceneProps, getQteStep, gameRules } from '../core/config';
 import { resolveCopyText } from '../core/text';
 import { createInitialGameState, tickGame } from '../core/state';
 import { applyAction } from '../core/actions';
@@ -18,6 +18,7 @@ import { LeaderWarningHud } from '../ui/LeaderWarningHud';
 import { StartScreen } from '../ui/StartScreen';
 import { EndPanel } from '../ui/EndPanel';
 import { DebugOverlay } from '../ui/DebugOverlay';
+import { TuningPanel } from '../ui/TuningPanel';
 
 type SceneObjectConfig = (typeof sceneObjects)[keyof typeof sceneObjects];
 
@@ -54,6 +55,7 @@ export class GameScene extends Phaser.Scene {
   private readonly views = new Map<string, ObjectView>();
   private leaderView!: LeaderView;
   private bgImage!: Phaser.GameObjects.Image;
+  private readonly propImages = new Map<string, Phaser.GameObjects.Image>();
   private edgeDarken!: EdgeDarken;
   private qteHighlight!: QteHighlight;
   private safeGlow!: Phaser.GameObjects.Rectangle;
@@ -66,6 +68,12 @@ export class GameScene extends Phaser.Scene {
   private endPanel!: EndPanel;
   private debugOverlay!: DebugOverlay;
   private hoverGfx!: Phaser.GameObjects.Graphics;
+  private tuningPanel!: TuningPanel;
+  private readonly zones = new Map<string, Phaser.GameObjects.Zone>();
+  // 布局编辑模式：拖动物件/道具实时改坐标，冻结玩法。
+  private layoutEdit = false;
+  private layoutGfx!: Phaser.GameObjects.Graphics;
+  private readonly layoutLabels = new Map<string, Phaser.GameObjects.Text>();
 
   // 非危险驱动的瞬时呈现态覆盖（files organized / protagonist sit_up）。
   private readonly transient = new Map<string, string>();
@@ -88,6 +96,15 @@ export class GameScene extends Phaser.Scene {
       .image(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2, 'office_background_base')
       .setDisplaySize(CANVAS_WIDTH, CANVAS_HEIGHT)
       .setDepth(DEPTH.background);
+
+    // ── 办公桌道具层（数据驱动，深度 deskProp，介于角色与桌面物件之间） ───────────
+    for (const p of sceneProps) {
+      const img = this.add
+        .image(p.x, p.y, p.asset)
+        .setDisplaySize(p.width, p.height)
+        .setDepth(DEPTH.deskProp);
+      this.propImages.set(p.id, img);
+    }
 
     // ── midground: 领导（巡查/预警/检查/离开 动画由 core 状态切换驱动） ────────────
     this.leaderView = new LeaderView(this);
@@ -124,6 +141,14 @@ export class GameScene extends Phaser.Scene {
     this.endPanel = new EndPanel(this, { onRestart: () => this.beginRun() });
     this.startScreen = new StartScreen(this, { onStart: () => this.beginRun() });
     this.debugOverlay = new DebugOverlay(this);
+
+    // ── 内置调参 / 布局调试面板（快捷键 T） ─────────────────────────────────────
+    this.layoutGfx = this.add.graphics().setDepth(DEPTH.debug - 1).setVisible(false);
+    this.tuningPanel = new TuningPanel({
+      onRestart: () => this.beginRun(),
+      onToggleLayout: (on) => this.setLayoutEditMode(on),
+      getLayoutJson: () => this.buildLayoutJson(),
+    });
 
     // ── 为可在 NORMAL_PLAY 或 QTE 点击的对象建 hitbox 交互区 ────────────────────
     this.buildInteractiveZones();
@@ -180,14 +205,18 @@ export class GameScene extends Phaser.Scene {
       // leader 无 hitbox；其余对象只要在某个模式下可点击就建交互区（QTE 需要 keyboard/protagonist）。
       if (!(obj.clickableInNormal || obj.clickableInQte) || !obj.hitbox) continue;
       const hb = obj.hitbox;
+      // 交互区深度须跟随对象的视觉层级：桌面物件（电脑/键盘…）在视觉上盖住主角下半身，
+      // 若所有 zone 用同一深度，重叠处的命中优先级会退化为创建顺序，导致后建的 protagonist
+      // zone 抢走电脑/键盘的点击（只剩未被遮挡的左侧窄条可点）。用各自的视觉深度对齐输入优先级。
       const zone = this.add
         .zone(hb.x + hb.width / 2, hb.y + hb.height / 2, hb.width, hb.height)
         .setInteractive({ useHandCursor: obj.clickableInNormal })
-        .setDepth(DEPTH.deskItem + 1);
+        .setDepth((INTERACTABLE_DEPTHS[id] ?? DEPTH.deskItem) + 1);
 
       zone.on('pointerover', () => this.onObjectHover(id));
       zone.on('pointerout', () => this.onObjectHoverEnd());
       zone.on('pointerdown', () => this.onObjectClick(id));
+      this.zones.set(id, zone);
     }
   }
 
@@ -215,8 +244,8 @@ export class GameScene extends Phaser.Scene {
 
   // ── click routing ────────────────────────────────────────────────────────────
   private onObjectClick(id: string): void {
-    // QTE 期间：任何对象点击都转发给 core 判定（命中/错点），不打开弹层。
-    if (this.state.currentMode === 'QTE_ACTIVE') {
+    // 宽限窗口(LEADER_WARNING)与 QTE 期间：任何对象点击都转发给 core 判定（命中/错点），不打开弹层。
+    if (this.state.currentMode === 'QTE_ACTIVE' || this.state.currentMode === 'LEADER_WARNING') {
       this.onQteClick(id);
       return;
     }
@@ -345,16 +374,28 @@ export class GameScene extends Phaser.Scene {
     if (!step) return;
     this.qteHighlight.setTarget(step.targetObjectId);
     const stepCfg = getQteStep(step.stepId);
-    this.hud.showQte(this.resolveText(stepCfg.promptTextKey), this.state.qteRemaining);
+    // 宽限期显示 leaderWarningRemaining，严格 QTE 期显示 qteRemaining（每帧再由 stepPresentation 刷新）。
+    const remaining =
+      this.state.currentMode === 'LEADER_WARNING'
+        ? this.state.leaderWarningRemaining
+        : this.state.qteRemaining;
+    this.hud.showQte(this.resolveText(stepCfg.promptTextKey), remaining);
   }
 
   // ── loop ─────────────────────────────────────────────────────────────────────
   update(_time: number, delta: number): void {
     const dt = delta / 1000;
+    // 布局编辑模式：冻结玩法，只画布局辅助线、刷新面板读数。
+    if (this.layoutEdit) {
+      this.drawLayoutGizmos();
+      this.tuningPanel.update(this.state);
+      return;
+    }
     if (!this.manualTick) {
       tickGame(this.state, dt);
     }
     this.stepPresentation(dt);
+    this.tuningPanel.update(this.state);
   }
 
   /**
@@ -397,17 +438,16 @@ export class GameScene extends Phaser.Scene {
         break;
       }
       case 'LEADER_WARNING': {
-        // 强制回收子状态 UI；显示预警 HUD；领导沿 approaching 移向 checking；边缘渐暗、背景切 warning。
+        // 强制回收子状态 UI；领导沿 approaching 移向 checking；边缘渐暗、背景切 warning。
+        // 预警即"可收拾"的宽限窗口：高亮首个目标并在 HUD 显示步骤提示，玩家此刻就能点击收拾。
         this.computerPanel.hide();
         this.coworkerMenu.hide();
         this.hoverGfx.clear();
-        this.qteHighlight.clear();
         this.setBackground(true);
-        const title = this.resolveText('systemMessages.leader_warning_start');
-        this.hud.showWarning(title, this.state.leaderWarningRemaining);
-        this.messageBar.show(title);
+        this.messageBar.show(this.resolveText('systemMessages.leader_warning_start'));
         this.edgeDarken.fadeTo(0.5, 0.6);
         this.leaderView.approach(this.state.leaderWarningRemaining);
+        this.syncQtePresentation();
         break;
       }
       case 'QTE_ACTIVE': {
@@ -550,6 +590,117 @@ export class GameScene extends Phaser.Scene {
     this.state.nextLeaderPatrol = 0;
   }
 
+  // ── 布局编辑模式（调参面板"布局模式"按钮驱动） ─────────────────────────────────
+  /** 开/关布局编辑：让物件与办公桌道具可拖动，实时改坐标并冻结玩法。 */
+  private setLayoutEditMode(on: boolean): void {
+    this.layoutEdit = on;
+    this.layoutGfx.setVisible(on);
+
+    // 可拖动对象：交互物件本体 + 办公桌道具。
+    const draggables: Array<{ id: string; img: Phaser.GameObjects.Image; kind: 'object' | 'prop' }> = [];
+    for (const [id, view] of this.views) draggables.push({ id, img: view.image, kind: 'object' });
+    for (const [id, img] of this.propImages) draggables.push({ id, img, kind: 'prop' });
+
+    for (const { id, img, kind } of draggables) {
+      if (on) {
+        img.setInteractive({ draggable: true, useHandCursor: true });
+        this.input.setDraggable(img, true);
+        img.off('drag');
+        img.on('drag', (_p: Phaser.Input.Pointer, x: number, y: number) =>
+          this.onLayoutDrag(id, kind, img, x, y),
+        );
+      } else {
+        img.off('drag');
+        img.disableInteractive();
+      }
+    }
+
+    if (!on) {
+      this.layoutGfx.clear();
+      for (const t of this.layoutLabels.values()) t.destroy();
+      this.layoutLabels.clear();
+    }
+  }
+
+  /** 拖动回调：移动精灵，并把新坐标写回 config（物件同步 hitbox 与交互区；道具写回 sceneProps）。 */
+  private onLayoutDrag(
+    id: string,
+    kind: 'object' | 'prop',
+    img: Phaser.GameObjects.Image,
+    x: number,
+    y: number,
+  ): void {
+    if (kind === 'object') {
+      const cfg = (sceneObjects as Record<string, SceneObjectConfig>)[id];
+      const dx = x - cfg.position.x;
+      const dy = y - cfg.position.y;
+      cfg.position.x = Math.round(x);
+      cfg.position.y = Math.round(y);
+      if (cfg.hitbox) {
+        cfg.hitbox.x = Math.round(cfg.hitbox.x + dx);
+        cfg.hitbox.y = Math.round(cfg.hitbox.y + dy);
+        const zone = this.zones.get(id);
+        zone?.setPosition(cfg.hitbox.x + cfg.hitbox.width / 2, cfg.hitbox.y + cfg.hitbox.height / 2);
+      }
+      img.setPosition(x, y);
+    } else {
+      const p = sceneProps.find((pr) => pr.id === id);
+      if (p) {
+        p.x = Math.round(x);
+        p.y = Math.round(y);
+      }
+      img.setPosition(x, y);
+    }
+  }
+
+  /** 画出所有 hitbox / 道具边框与坐标标签，辅助对位。 */
+  private drawLayoutGizmos(): void {
+    const g = this.layoutGfx;
+    g.clear();
+
+    for (const [id] of this.views) {
+      const cfg = (sceneObjects as Record<string, SceneObjectConfig>)[id];
+      if (!cfg.hitbox) continue;
+      const hb = cfg.hitbox;
+      g.lineStyle(1.5, 0xffb000, 0.9);
+      g.strokeRect(hb.x, hb.y, hb.width, hb.height);
+      this.gizmoLabel(`obj:${id}`, `${id}\n(${cfg.position.x},${cfg.position.y})`, hb.x + 2, hb.y + 2);
+    }
+
+    for (const p of sceneProps) {
+      g.lineStyle(1.5, 0x33d6ff, 0.9);
+      g.strokeRect(p.x - p.width / 2, p.y - p.height / 2, p.width, p.height);
+      this.gizmoLabel(`prop:${p.id}`, `${p.id}\n(${p.x},${p.y})`, p.x - p.width / 2 + 2, p.y - p.height / 2 + 2);
+    }
+  }
+
+  private gizmoLabel(key: string, text: string, x: number, y: number): void {
+    let t = this.layoutLabels.get(key);
+    if (!t) {
+      t = this.add
+        .text(x, y, text, {
+          color: '#ffffff',
+          backgroundColor: 'rgba(0,0,0,0.55)',
+          fontFamily: 'Consolas, monospace',
+          fontSize: '11px',
+          padding: { x: 2, y: 1 },
+        })
+        .setDepth(DEPTH.debug);
+      this.layoutLabels.set(key, t);
+    }
+    t.setText(text).setPosition(x, y).setVisible(true);
+  }
+
+  /** 导出当前布局（sceneObjects 坐标/hitbox + sceneProps）为可回填的 JSON 片段。 */
+  private buildLayoutJson(): string {
+    const objs: Record<string, unknown> = {};
+    for (const [id] of this.views) {
+      const cfg = (sceneObjects as Record<string, SceneObjectConfig>)[id];
+      objs[id] = { position: cfg.position, hitbox: cfg.hitbox };
+    }
+    return JSON.stringify({ 'sceneObjects (positions/hitboxes)': objs, 'sceneProps.json': { props: sceneProps } }, null, 2);
+  }
+
   /** 暴露调试 API，供无头/预览 QA 断言与模拟操作（仅供测试，不参与正式玩法）。 */
   private exposeDebugApi(): void {
     (window as unknown as Record<string, unknown>).__game = {
@@ -566,6 +717,17 @@ export class GameScene extends Phaser.Scene {
       },
       toggleDebug: () => this.debugOverlay.toggle(),
       getObjectTexture: (id: string) => this.views.get(id)?.textureKey ?? null,
+      // QA：返回场景坐标 (x,y) 处命中优先级最高（深度最大）的交互区 id，
+      // 用于回归"重叠 hitbox 的点击落到视觉最上层对象"（电脑/键盘不再被主角 zone 抢点）。
+      hitTestTop: (x: number, y: number): { id: string; depth: number } | null => {
+        let top: { id: string; depth: number } | null = null;
+        for (const [id, zone] of this.zones) {
+          const b = zone.getBounds();
+          if (x < b.x || x > b.right || y < b.y || y > b.bottom) continue;
+          if (!top || zone.depth > top.depth) top = { id, depth: zone.depth };
+        }
+        return top;
+      },
       // ── M4/M5 QA 扩展 ────────────────────────────────────────────────────────
       triggerPatrol: () => this.triggerPatrol(),
       // 只读表现层状态（供 P0-1 回归断言：领导是否离开 checking / 暗角是否消退 / HUD 是否收尾）。

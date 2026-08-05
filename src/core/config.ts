@@ -6,6 +6,7 @@ import qteRaw from '../data/qte.json';
 import gameRulesRaw from '../data/gameRules.json';
 import copyTextRaw from '../data/copyText.json';
 import sceneObjectsRaw from '../data/sceneObjects.json';
+import scenePropsRaw from '../data/sceneProps.json';
 import visualsRaw from '../data/visuals.json';
 
 import type { ActionId, DangerId, ResourceId, QteStepId } from './types';
@@ -20,6 +21,7 @@ export const coworkerWatchEffect = wavesRaw.coworkerWatchEffect;
 export const coworkerRescueEffect = qteRaw.coworkerRescueEffect;
 export const copyText = copyTextRaw;
 export const sceneObjects = sceneObjectsRaw.sceneObjects;
+export const sceneProps = scenePropsRaw.props;
 export const visuals = visualsRaw;
 
 // Typed accessors
