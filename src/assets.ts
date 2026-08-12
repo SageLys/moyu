@@ -60,9 +60,6 @@ export const AssetPaths = {
   end_satiety_shutdown:              "/assets/ai_generated/processed/end_satiety_shutdown.png",
   end_trust_desk_cleared:            "/assets/ai_generated/processed/end_trust_desk_cleared.png",
   end_coworker_broadcast:            "/assets/ai_generated/processed/end_coworker_broadcast.png",
-  mood_reference_office_pressure:    "/assets/ai_generated/processed/mood_reference_office_pressure.png",
-  poster_style_reference_01:         "/assets/ai_generated/processed/poster_style_reference_01.png",
-  poster_style_reference_02:         "/assets/ai_generated/processed/poster_style_reference_02.png",
 
 } as const;
 
