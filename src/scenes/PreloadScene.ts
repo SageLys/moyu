@@ -17,7 +17,9 @@ export class PreloadScene extends Phaser.Scene {
     this.renderProgressText();
 
     (Object.keys(AssetPaths) as AssetKey[]).forEach((key) => {
-      const url = getAssetPath(key);
+      // AssetPaths are rooted for local development.  Prefix them with Vite's
+      // public base so the same build also works from GitHub Pages (/moyu/).
+      const url = `${import.meta.env.BASE_URL}${getAssetPath(key).replace(/^\//, '')}`;
       if (url.toLowerCase().endsWith('.svg')) {
         this.load.svg(key, url);
       } else {
