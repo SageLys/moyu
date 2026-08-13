@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 50" width="70" height="50">
+  <!-- Glow halo around phone when lit -->
+  <rect x="19" y="0" width="32" height="50" rx="7" fill="#7BBDE0" opacity="0.3"/>
+  <!-- Phone body -->
+  <rect x="22" y="2" width="26" height="46" rx="5" fill="#6E8B9E" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Screen lit/on (bright blue-white) -->
+  <rect x="25" y="8" width="20" height="30" rx="3" fill="#C4DCEA" stroke="#7BBDE0" stroke-width="1.5"/>
+  <!-- App content: chat bubbles -->
+  <rect x="27" y="11" width="14" height="4" rx="2" fill="#7AABCC"/>
+  <rect x="29" y="17" width="10" height="4" rx="2" fill="#7AABCC" opacity="0.7"/>
+  <rect x="27" y="23" width="12" height="4" rx="2" fill="#7AABCC" opacity="0.8"/>
+  <!-- Notification badge -->
+  <circle cx="42" cy="10" r="3" fill="#E05050"/>
+  <!-- Notification count -->
+  <circle cx="35" cy="41" r="2" fill="#4A6070" opacity="0.8"/>
+</svg>

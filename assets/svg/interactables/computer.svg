@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 170" width="200" height="170">
+  <!-- Monitor outer body -->
+  <rect x="4" y="4" width="192" height="128" rx="8" fill="#5C7A8A" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Bezel inner frame -->
+  <rect x="14" y="13" width="172" height="110" rx="4" fill="#8BAFC4" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Screen content: title bar -->
+  <rect x="14" y="13" width="172" height="18" rx="4" fill="#4A6474"/>
+  <!-- Tab indicators -->
+  <rect x="18" y="16" width="36" height="12" rx="3" fill="#7A9FB8"/>
+  <rect x="58" y="16" width="36" height="12" rx="3" fill="#5C7A8A" opacity="0.7"/>
+  <rect x="98" y="16" width="36" height="12" rx="3" fill="#5C7A8A" opacity="0.7"/>
+  <!-- Screen content lines -->
+  <rect x="24" y="40" width="110" height="7" rx="2" fill="#4A7088"/>
+  <rect x="24" y="55" width="148" height="5" rx="2" fill="#5A8098" opacity="0.8"/>
+  <rect x="24" y="67" width="122" height="5" rx="2" fill="#5A8098" opacity="0.7"/>
+  <rect x="24" y="79" width="136" height="5" rx="2" fill="#5A8098" opacity="0.6"/>
+  <rect x="24" y="91" width="90" height="5" rx="2" fill="#5A8098" opacity="0.6"/>
+  <rect x="24" y="103" width="152" height="5" rx="2" fill="#5A8098" opacity="0.5"/>
+  <!-- Monitor stand neck -->
+  <rect x="86" y="132" width="28" height="20" rx="2" fill="#4A6474" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Stand base -->
+  <rect x="60" y="152" width="80" height="14" rx="6" fill="#4A6474" stroke="#2C3E50" stroke-width="2.5"/>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <!-- Outermost ripple ring (most faded) -->
+  <circle cx="40" cy="40" r="36" fill="none"
+          stroke="#C8D4DC" stroke-width="1.5" opacity="0.25"/>
+  <!-- Middle ripple ring -->
+  <circle cx="40" cy="40" r="26" fill="none"
+          stroke="#A8B8C4" stroke-width="2" opacity="0.45"/>
+  <!-- Inner ripple ring -->
+  <circle cx="40" cy="40" r="16" fill="none"
+          stroke="#8898A8" stroke-width="2.5" opacity="0.65"/>
+  <!-- Center click point -->
+  <circle cx="40" cy="40" r="5" fill="#6A7A8A" opacity="0.8"/>
+  <circle cx="40" cy="40" r="2.5" fill="#B8C8D4" opacity="0.9"/>
+  <!-- Radial burst lines (click feedback) -->
+  <line x1="40" y1="40" x2="40" y2="10" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="63" y2="17" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="70" y2="40" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="63" y2="63" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="40" y2="70" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="17" y2="63" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="10" y2="40" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+  <line x1="40" y1="40" x2="17" y2="17" stroke="#9AAAB8" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+</svg>

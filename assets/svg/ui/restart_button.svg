@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 56" width="160" height="56">
+  <!-- Button shadow -->
+  <rect x="3" y="5" width="154" height="48" rx="10" fill="#1A2228" opacity="0.4"/>
+  <!-- Button body -->
+  <rect x="0" y="0" width="154" height="48" rx="10" fill="#4A7888" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Button top highlight -->
+  <rect x="4" y="4" width="146" height="16" rx="7" fill="#5A8898" opacity="0.5"/>
+  <!-- Button bottom shadow strip -->
+  <rect x="4" y="38" width="146" height="6" rx="4" fill="#2A5060" opacity="0.5"/>
+  <!-- Restart icon (circular arrow) -->
+  <path d="M56,24 Q56,14 68,14 Q80,14 80,24 Q80,34 68,34 Q62,34 58,30"
+        fill="none" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <!-- Arrowhead -->
+  <polygon points="54,26 58,30 62,26" fill="white"/>
+  <!-- Text placeholder (code renders "重新开始") -->
+  <rect x="84" y="18" width="56" height="12" rx="4" fill="white" opacity="0.3"/>
+</svg>

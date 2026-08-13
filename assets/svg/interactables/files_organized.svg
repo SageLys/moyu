@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" width="140" height="160">
+  <!-- Binder/folder back -->
+  <rect x="6" y="14" width="128" height="142" rx="5" fill="#A89888" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Folder tab label -->
+  <rect x="6" y="6" width="52" height="16" rx="4" fill="#978878" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Stacked paper edges (neat, aligned) -->
+  <rect x="14" y="30" width="112" height="5" rx="1.5" fill="#E8E4D8" stroke="#B8A898" stroke-width="1"/>
+  <rect x="14" y="38" width="112" height="5" rx="1.5" fill="#E4E0D4" stroke="#B8A898" stroke-width="1"/>
+  <rect x="14" y="46" width="112" height="5" rx="1.5" fill="#E0DCD0" stroke="#B8A898" stroke-width="1"/>
+  <rect x="14" y="54" width="112" height="5" rx="1.5" fill="#DEDAD0" stroke="#B8A898" stroke-width="1"/>
+  <rect x="14" y="62" width="112" height="5" rx="1.5" fill="#DAD6CC" stroke="#B8A898" stroke-width="1"/>
+  <!-- Top paper (main visible) -->
+  <rect x="14" y="70" width="112" height="76" rx="3" fill="#E8E4D8" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Neat content lines (all aligned, no dog-ears) -->
+  <rect x="24" y="82" width="92" height="6" rx="2" fill="#C0BEB2"/>
+  <rect x="24" y="96" width="92" height="5" rx="2" fill="#CACAC0" opacity="0.8"/>
+  <rect x="24" y="108" width="92" height="5" rx="2" fill="#CACAC0" opacity="0.8"/>
+  <rect x="24" y="120" width="92" height="5" rx="2" fill="#CACAC0" opacity="0.7"/>
+  <rect x="24" y="132" width="60" height="5" rx="2" fill="#CACAC0" opacity="0.6"/>
+  <!-- Organized state highlight glow (green tint border) -->
+  <rect x="6" y="14" width="128" height="142" rx="5" fill="none" stroke="#92AE8E" stroke-width="3" opacity="0.8"/>
+  <!-- Binder clip at top -->
+  <rect x="52" y="8" width="36" height="8" rx="3" fill="#7A8878" stroke="#2C3E50" stroke-width="1.5"/>
+</svg>

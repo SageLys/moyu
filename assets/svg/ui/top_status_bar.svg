@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 64" width="1280" height="64">
+  <!-- 顶部状态栏底框：只画面板背景与边线，资源条/时间/波次全部由 StatusBar.ts 动态绘制，
+       这里不再画死任何数值条（否则会与动态条重合，见 issue #3）。 -->
+  <rect x="0" y="0" width="1280" height="64" fill="#2A3440" stroke="none"/>
+  <!-- Bottom border line -->
+  <line x1="0" y1="63" x2="1280" y2="63" stroke="#1A2228" stroke-width="2"/>
+  <!-- Top subtle highlight -->
+  <line x1="0" y1="0" x2="1280" y2="0" stroke="#3E4E5C" stroke-width="1"/>
+  <!-- Separators (仅装饰，与动态文字分区对齐) -->
+  <line x1="880" y1="12" x2="880" y2="52" stroke="#3A4A58" stroke-width="1.5" opacity="0.4"/>
+</svg>

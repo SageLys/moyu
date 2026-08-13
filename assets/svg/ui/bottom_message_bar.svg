@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 56" width="1280" height="56">
+  <!-- Bar background -->
+  <rect x="0" y="0" width="1280" height="56" fill="#24303C" stroke="none"/>
+  <!-- Top border line -->
+  <line x1="0" y1="0" x2="1280" y2="0" stroke="#1A2228" stroke-width="2"/>
+  <!-- Subtle top highlight -->
+  <line x1="0" y1="2" x2="1280" y2="2" stroke="#3A4A58" stroke-width="1" opacity="0.5"/>
+  <!-- Left icon area (message type indicator) -->
+  <circle cx="28" cy="28" r="12" fill="none" stroke="#5A7080" stroke-width="2"/>
+  <circle cx="28" cy="28" r="5" fill="#5A7080" opacity="0.6"/>
+  <!-- Divider -->
+  <line x1="52" y1="10" x2="52" y2="46" stroke="#3A4A58" stroke-width="1.5" opacity="0.7"/>
+  <!-- Text placeholder area (code renders real text here) -->
+  <rect x="62" y="18" width="480" height="10" rx="4" fill="#3A4A58" opacity="0.5"/>
+  <rect x="62" y="32" width="320" height="8" rx="3" fill="#2E3C48" opacity="0.4"/>
+  <!-- Right side: action feedback area -->
+  <line x1="1190" y1="10" x2="1190" y2="46" stroke="#3A4A58" stroke-width="1.5" opacity="0.5"/>
+  <rect x="1202" y="16" width="66" height="24" rx="5" fill="#3A4A58" opacity="0.5"/>
+</svg>

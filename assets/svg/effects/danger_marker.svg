@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <filter id="subtle-glow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Warning triangle (slightly rounded) -->
+  <path d="M16,3 L30,28 L2,28 Z" rx="2"
+        fill="#D97020" stroke="#2C3E50" stroke-width="2"
+        stroke-linejoin="round" filter="url(#subtle-glow)"/>
+  <!-- Inner lighter triangle area -->
+  <path d="M16,8 L26,26 L6,26 Z" fill="#E89040" opacity="0.5"/>
+  <!-- Exclamation stem -->
+  <rect x="14.5" y="12" width="3" height="9" rx="1.5" fill="#1A1000"/>
+  <!-- Exclamation dot -->
+  <circle cx="16" cy="24" r="1.8" fill="#1A1000"/>
+</svg>

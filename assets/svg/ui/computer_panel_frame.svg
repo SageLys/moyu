@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 536" width="800" height="536">
+  <!-- Panel drop shadow -->
+  <rect x="6" y="6" width="794" height="530" rx="10" fill="#1A2228" opacity="0.5"/>
+  <!-- Panel background -->
+  <rect x="0" y="0" width="794" height="524" rx="10" fill="#E8E4DC" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Title bar -->
+  <rect x="0" y="0" width="794" height="44" rx="10" fill="#4A6474" stroke="#2C3E50" stroke-width="3"/>
+  <!-- Title bar bottom (flat) -->
+  <rect x="0" y="30" width="794" height="14" fill="#4A6474"/>
+  <!-- Window control dots (top-left) -->
+  <circle cx="20" cy="22" r="7" fill="#C07070" stroke="#2C3E50" stroke-width="1.5"/>
+  <circle cx="40" cy="22" r="7" fill="#C0A840" stroke="#2C3E50" stroke-width="1.5"/>
+  <circle cx="60" cy="22" r="7" fill="#70A870" stroke="#2C3E50" stroke-width="1.5"/>
+  <!-- Window title area -->
+  <rect x="200" y="12" width="394" height="20" rx="4" fill="#3A5464" opacity="0.6"/>
+
+  <!-- Tab bar -->
+  <rect x="0" y="44" width="794" height="38" fill="#5A7888" stroke="#2C3E50" stroke-width="1"/>
+  <!-- Tab 1: active (文档) -->
+  <rect x="4" y="48" width="148" height="34" rx="6" fill="#E8E4DC" stroke="#2C3E50" stroke-width="2"/>
+  <rect x="16" y="57" width="90" height="10" rx="3" fill="#8898A5" opacity="0.7"/>
+  <!-- Tab 2 (Excel) -->
+  <rect x="158" y="50" width="148" height="30" rx="5" fill="#4A6474" stroke="#2C3E50" stroke-width="1.5"/>
+  <rect x="170" y="59" width="80" height="10" rx="3" fill="#6A8898" opacity="0.6"/>
+  <!-- Tab 3 (聊天) -->
+  <rect x="312" y="50" width="148" height="30" rx="5" fill="#4A6474" stroke="#2C3E50" stroke-width="1.5"/>
+  <rect x="324" y="59" width="80" height="10" rx="3" fill="#6A8898" opacity="0.6"/>
+  <!-- Tab 4: fishing page indicator (摸鱼 - slightly highlighted/distinct) -->
+  <rect x="466" y="50" width="148" height="30" rx="5" fill="#3C5464" stroke="#C8A46A" stroke-width="1.5"/>
+  <rect x="478" y="59" width="80" height="10" rx="3" fill="#8A7A5A" opacity="0.7"/>
+
+  <!-- Content area (where tab content renders) -->
+  <rect x="4" y="82" width="786" height="434" rx="4" fill="#F0EDE6" stroke="#C8C4BC" stroke-width="1"/>
+  <!-- Content area: placeholder lines (fake document look) -->
+  <rect x="32" y="108" width="320" height="18" rx="4" fill="#C8C4B8"/>
+  <rect x="32" y="138" width="720" height="10" rx="3" fill="#DDDAD2" opacity="0.9"/>
+  <rect x="32" y="156" width="680" height="10" rx="3" fill="#DDDAD2" opacity="0.8"/>
+  <rect x="32" y="174" width="700" height="10" rx="3" fill="#DDDAD2" opacity="0.8"/>
+  <rect x="32" y="192" width="540" height="10" rx="3" fill="#DDDAD2" opacity="0.7"/>
+  <!-- Second paragraph -->
+  <rect x="32" y="224" width="580" height="10" rx="3" fill="#DDDAD2" opacity="0.7"/>
+  <rect x="32" y="242" width="720" height="10" rx="3" fill="#DDDAD2" opacity="0.6"/>
+  <rect x="32" y="260" width="660" height="10" rx="3" fill="#DDDAD2" opacity="0.6"/>
+  <rect x="32" y="278" width="440" height="10" rx="3" fill="#DDDAD2" opacity="0.6"/>
+  <!-- Third paragraph -->
+  <rect x="32" y="310" width="600" height="10" rx="3" fill="#DDDAD2" opacity="0.5"/>
+  <rect x="32" y="328" width="720" height="10" rx="3" fill="#DDDAD2" opacity="0.5"/>
+  <rect x="32" y="346" width="380" height="10" rx="3" fill="#DDDAD2" opacity="0.5"/>
+  <!-- Scrollbar hint (right side) -->
+  <rect x="770" y="90" width="10" height="418" rx="5" fill="#D0CCC4"/>
+  <rect x="770" y="90" width="10" height="90" rx="5" fill="#A8A4A0"/>
+  <!-- Status bar bottom strip -->
+  <rect x="4" y="504" width="786" height="16" rx="3" fill="#E0DCD4" stroke="#C0BDB6" stroke-width="1"/>
+</svg>

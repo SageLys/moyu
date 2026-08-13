@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 50" width="70" height="50">
+  <!-- Phone body (portrait phone, centered in landscape canvas) -->
+  <rect x="22" y="2" width="26" height="46" rx="5" fill="#6E8B9E" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Screen dark/off -->
+  <rect x="25" y="8" width="20" height="30" rx="3" fill="#2E3A46"/>
+  <!-- Home indicator bar (bottom of screen) -->
+  <rect x="30" y="41" width="10" height="3" rx="1.5" fill="#4A6070" opacity="0.8"/>
+  <!-- Front camera dot -->
+  <circle cx="35" cy="5" r="1.5" fill="#4A6070"/>
+</svg>

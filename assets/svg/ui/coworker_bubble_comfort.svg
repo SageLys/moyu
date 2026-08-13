@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" width="70" height="70">
+  <!-- Bubble circle background -->
+  <circle cx="35" cy="35" r="32" fill="#3A4A3A" stroke="#2C3E50" stroke-width="2.5"/>
+  <circle cx="35" cy="35" r="28" fill="none" stroke="#5A7A5A" stroke-width="1" opacity="0.5"/>
+  <!-- Heart icon (安抚 - comfort/soothe) -->
+  <path d="M35,50 Q20,40 18,28 Q18,20 26,20 Q31,20 35,26 Q39,20 44,20 Q52,20 52,28 Q50,40 35,50 Z"
+        fill="#C87080" stroke="#2C3E50" stroke-width="2.5"/>
+  <!-- Heart inner highlight -->
+  <path d="M28,24 Q24,24 23,30" fill="none" stroke="#E0A0A8" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <!-- Small sparkles around heart -->
+  <line x1="14" y1="20" x2="14" y2="14" stroke="#9AB89A" stroke-width="2" stroke-linecap="round"/>
+  <line x1="11" y1="17" x2="17" y2="17" stroke="#9AB89A" stroke-width="2" stroke-linecap="round"/>
+  <line x1="54" y1="22" x2="54" y2="16" stroke="#9AB89A" stroke-width="2" stroke-linecap="round"/>
+  <line x1="51" y1="19" x2="57" y2="19" stroke="#9AB89A" stroke-width="2" stroke-linecap="round"/>
+</svg>
